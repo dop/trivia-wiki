@@ -1,0 +1,10 @@
+
+Patterns : list, list*, cons, constant, variable, wildcard (_)
+
+Any symbols are considered as variable, except constant symbols (namely,
+ =t=, =nil= and keywords) and those named as =_= (checked by symbol name).
+ These are identical to the corresponding patterns in Optima.
+
+=ematch0= signals an error when the input did not match any
+patterns. =lambda-match0= and =lambda-ematch0= expands to =lambda= which
+takes an argument and pass it to =match0= and =ematch0=, respectively.
