@@ -1,6 +1,4 @@
-
 First of all, =match1= accepts or1/guard1 patterns only.
-syntax:
 
 : (or1 subpattens*)
 : (guard1 symbol
@@ -9,7 +7,7 @@ syntax:
 + Unlike original =guard= pattern, guard1 patterns do not allow subpatterns
   in =symbol=. 1 guard1 pattern corresponds to exactly 1 type checking.
   Instead, =symbol= may contain additional lexical
-  information. For details see [[./GUARD1.org][GUARD1.org]] .
+  information. For details see the next section.
 + Level-1 patterns should be canonical. That is, there should be no
   forward-referenced symbols.
 
@@ -45,4 +43,27 @@ temp)=. It produces a code like below.
                 (LET ((B #:FIELD1864))
                   (WHEN T (RETURN (LOCALLY (VECTOR A B)))))))))))))
 #+END_SRC
+
+** Extended syntax of =guard1=
+
+Normal syntax of guard1:
+
+#+BEGIN_SRC lisp
+(guard1 symbol test-form {generator-form subpattern}*)
+#+END_SRC
+
+Extended syntax of guard1:
+
+#+BEGIN_SRC lisp
+(guard1 (symbol &key (type t) place (ignorable (symbol-package symbol)) &allow-other-keys)
+        test-form {generator-form subpattern}*)
+#+END_SRC
+
+- type :: a type specifier. It is added to the declaration after =let=.
+- place :: if this key is non-nil, then the symbol is bound with
+           symbol-macrolet and the accessor becomes setf-able.
+- ignorable :: If non-nil, =symbol= is declared to be =ignorable=, and is
+               not accounted for or1 pattern consistency check. Default
+               value is =T= when =symbol= is a non-interned symbol, and
+               =NIL= otherwise.
 
