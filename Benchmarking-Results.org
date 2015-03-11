@@ -1,0 +1,87 @@
+* Fibonacci
+
+Computes a large Fibonacci number. I didnt apply the memoization technique: it is a quite basic implementation.
+
+* Gomoku
+
+Matches /winning pattern/ of 5x5 Gomoku table game against a list of randomly generated fields. 100000 fields are generated and fixed, then supplied to each matcher.
+
+* Stringmatch
+
+Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
+
+* Results
+
+#+BEGIN_SRC
+-------------------- OPTIMA ----------------------------------------
+Evaluation took:
+  17.419 seconds of real time
+  17.416962 seconds of total run time (17.409019 user, 0.007943 system)
+  99.99% CPU
+  52,261,034,928 processor cycles
+  89,968 bytes consed
+  
+ Black : White : Notany = 29034000 : 30429540 : 536460 
+Evaluation took:
+  39.796 seconds of real time
+  39.782663 seconds of total run time (39.778727 user, 0.003936 system)
+  99.97% CPU
+  119,394,547,856 processor cycles
+  197,408 bytes consed
+  
+ Matched 7100000 times
+Evaluation took:
+  81.857 seconds of real time
+  81.838362 seconds of total run time (81.830568 user, 0.007794 system)
+  99.98% CPU
+  245,586,168,784 processor cycles
+  451,184 bytes consed
+  
+-------------------- TRIVIAL ----------------------------------------
+Evaluation took:
+  14.535 seconds of real time
+  14.531412 seconds of total run time (14.531412 user, 0.000000 system)
+  99.97% CPU
+  43,606,561,808 processor cycles
+  98,576 bytes consed
+  
+ Black : White : Notany = 29034000 : 30429540 : 536460 
+Evaluation took:
+  42.185 seconds of real time
+  42.168256 seconds of total run time (42.148374 user, 0.019882 system)
+  99.96% CPU
+  126,563,079,030 processor cycles
+  244,080 bytes consed
+  
+ Matched 7100000 times
+Evaluation took:
+  8.130 seconds of real time
+  8.128121 seconds of total run time (8.124103 user, 0.004018 system)
+  99.98% CPU
+  24,390,252,690 processor cycles
+  1,248 bytes consed
+  
+-------------------- EMILIE ----------------------------------------
+Evaluation took:
+  14.219 seconds of real time
+  14.211433 seconds of total run time (14.211419 user, 0.000014 system)
+  99.94% CPU
+  42,657,138,903 processor cycles
+  98,464 bytes consed
+  
+ Black : White : Notany = 29034000 : 30429540 : 536460 
+Evaluation took:
+  42.187 seconds of real time
+  42.168216 seconds of total run time (42.168201 user, 0.000015 system)
+  99.95% CPU
+  126,566,833,181 processor cycles
+  242,736 bytes consed
+  
+ Matched 7100000 times
+Evaluation took:
+  1.646 seconds of real time
+  1.645561 seconds of total run time (1.645561 user, 0.000000 system)
+  100.00% CPU
+  4,938,058,790 processor cycles
+  0 bytes consed
+#+END_SRC

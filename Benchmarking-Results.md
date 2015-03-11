@@ -1,6 +1,0 @@
-* fibonacci
-
-* gomoku
-
-* stringmatch
-
