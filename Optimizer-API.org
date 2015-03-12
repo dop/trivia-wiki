@@ -4,7 +4,7 @@ namespace *optimizer*
 
 function *symbol-optimizer* /symbol/ -> /function/
 
-function *(setf symbol-optimizer)* //function/ /symbol/ -> /symbol/
+function *(setf symbol-optimizer)* /function/ /symbol/ -> /symbol/
 
 variable =*optimizer*=
 
