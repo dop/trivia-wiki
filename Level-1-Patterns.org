@@ -1,8 +1,10 @@
-First of all, =match1= accepts or1/guard1 patterns only.
+=match1= accepts or1/guard1 patterns only.
 
-: (or1 subpattens*)
-: (guard1 symbol
-:         test-form {generator-form subpattern}*)
+* =guard1= pattern
+
+#+BEGIN_SRC lisp
+(guard1 symbol test-form {generator-form subpattern}*)
+#+END_SRC
 
 + Unlike original =guard= pattern, guard1 patterns do not allow subpatterns
   in =symbol=. 1 guard1 pattern corresponds to exactly 1 type checking.
@@ -11,7 +13,7 @@ First of all, =match1= accepts or1/guard1 patterns only.
 + Level-1 patterns should be canonical. That is, there should be no
   forward-referenced symbols.
 
-Thus, compilation of =match1= is equivalent to just building a
+Thus, compilation of =guard1= is equivalent to just building a
 form consisting of =if= and =let= binding. =match1= assumes the
 matching tree is already valid and optimized.
 
@@ -36,23 +38,21 @@ temp)=. It produces a code like below.
   (BLOCK NIL
     (LET ((TEMP #:WHAT1862))
       (WHEN (CONSP TEMP)
-        (LET ((#:FIELD1863 (CAR TEMP)))
-          (LET ((A #:FIELD1863))
-            (WHEN T
-              (LET ((#:FIELD1864 (CADR TEMP)))
-                (LET ((B #:FIELD1864))
-                  (WHEN T (RETURN (LOCALLY (VECTOR A B)))))))))))))
+        (LET ((A (CAR TEMP)))
+          (WHEN T
+            (LET ((B (CADR TEMP)))
+              (WHEN T (RETURN (LOCALLY (VECTOR A B)))))))))))
 #+END_SRC
 
 ** Extended syntax of =guard1=
 
-Normal syntax of guard1:
+As noted earlier, =guard1= may contain additional lexical declaration information within =symbol=. While the normal syntax of guard1 is as follows:
 
 #+BEGIN_SRC lisp
 (guard1 symbol test-form {generator-form subpattern}*)
 #+END_SRC
 
-Extended syntax of guard1:
+the extended guard1 syntax is:
 
 #+BEGIN_SRC lisp
 (guard1 (symbol &key (type t) place (ignorable (symbol-package symbol)) &allow-other-keys)
@@ -67,3 +67,23 @@ Extended syntax of guard1:
                value is =T= when =symbol= is a non-interned symbol, and
                =NIL= otherwise.
 
+Note that =type= does not affect the optimization nor the test form. The declaration is added only to the conditional branch where the test form is evaluated to be true.
+
+* Or1 Pattern
+
+: (or1 subpattens*)
+
+If the sets of variables under =or1= subpatterns are not the same, missing variables are assigned NIL.
+
+#+BEGIN_SRC lisp
+(defun test (x)
+   (match x
+     ;; using level2 cons/vector pattern for convenience
+     ((or1 (cons a b)
+           (vector a c)) (values a b c))))
+
+(test '(1 . 2)) ;; --> 1, 2, nil
+(test #(1 2)) ;; --> 1, nil, 2
+#+END_SRC
+
+This behavior can be changed by setting =*or-pattern-allow-unshared-variables*= to =NIL=. When two subpatterns do not share the same set of patterns, it can signal an assertion error of type =or1-pattern-inconsistency=, with =(repair-pattern subpattern)= restart. You may fix the subpattern and call this handler with a new pattern.
