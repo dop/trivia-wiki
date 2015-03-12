@@ -16,7 +16,7 @@ macro *defoptimizer* /name args/ &body /body/
 
 /*optimizer*/ : a symbol bound to an optimizer function in /optimizer/ namespace.
 
-/function/ : an optimizer function of complex signature.
+/function/ : an optimizer function of 1 arguent.
 
 /name/ : a symbol, not evaluated
 
@@ -24,10 +24,9 @@ macro *defoptimizer* /name args/ &body /body/
 
 *** Description:
 
-/function/ should be of type =(function (list list &key &allow-other-keys)
- list)=. The first argument should be a list of types. The second argument
- is a list of multi-matching clauses. The function should return a list of 
- modified matching clauses.
+/function/ should be of =(ftype (function (list &key &allow-other-keys)
+ list))=. The argument is a list of matching clauses. The function should return a list of 
+ modified clauses.
 
 =defoptimizer= is a convenience macro that registers the given function definition as
 the optimizer.
