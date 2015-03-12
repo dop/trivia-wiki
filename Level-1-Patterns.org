@@ -1,6 +1,4 @@
-=match1= accepts or1/guard1 patterns only.
-
-* =guard1= pattern
+* Guard1 Pattern
 
 #+BEGIN_SRC lisp
 (guard1 symbol test-form {generator-form subpattern}*)
@@ -44,7 +42,7 @@ temp)=. It produces a code like below.
               (WHEN T (RETURN (LOCALLY (VECTOR A B)))))))))))
 #+END_SRC
 
-** Extended syntax of =guard1=
+** Extended Syntax of Guard1
 
 As noted earlier, =guard1= may contain additional lexical declaration information within =symbol=. While the normal syntax of guard1 is as follows:
 
