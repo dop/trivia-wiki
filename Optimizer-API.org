@@ -14,7 +14,7 @@ macro *defoptimizer* /name args/ &body /body/
 
 *** Arguments and Values:
 
-/*optimizer*/ : a symbol naming an optimizer function.
+/*optimizer*/ : a symbol bound to an optimizer function in /optimizer/ namespace.
 
 /function/ : an optimizer function of complex signature.
 
