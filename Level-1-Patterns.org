@@ -87,6 +87,6 @@ Or1 has an important role called /consistency check/, of checking if the set of 
 (test #(1 2)) ;; --> 1, nil, 2
 #+END_SRC
 
-This behavior can be changed by setting =*or-pattern-allow-unshared-variables*= to =NIL=. When two subpatterns do not share the same set of patterns, it can signal an assertion error of type =or1-pattern-inconsistency=, with =(repair-pattern subpattern)= restart. You may fix the subpattern and call this handler with a new pattern.
+This behavior can be changed by setting =*or-pattern-allow-unshared-variables*= to =NIL=. When two subpatterns do not share the same set of patterns, it can signal an assertion error of type =or1-pattern-inconsistency=, with =(repair-pattern subpattern)= restart. You may fix and replace the subpattern by calling this handler with a new pattern.
 
 When a symbol is declared to be ignorable by =guard1=, it is not accounted for pattern consistency check.
