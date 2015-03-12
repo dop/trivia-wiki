@@ -53,7 +53,7 @@ As noted earlier, =guard1= may contain additional lexical declaration informatio
 the extended guard1 syntax is:
 
 #+BEGIN_SRC lisp
-(guard1 (&key
+(guard1 (sym &key
            (type t)
            place
            (ignorable (if (symbol-package sym) nil t))
