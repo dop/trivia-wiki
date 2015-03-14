@@ -47,7 +47,7 @@ the following functionality:
      implement a matcher. =match1= simply expands into nested =let= and
      =if= forms.
 + level 2a : pattern expander :: Provides several derived patterns over the
-     level 1 patterns. All /primitive/ patterns in Optima was implemented as a set of derived patterns.
+     level 1 patterns. All [[https://github.com/m2ym/optima][primitive, nonmodifiable pattern language in Optima]] are now implemented as a set of derived patterns in [[https://github.com/guicho271828/trivia/blob/master/level2/derived.lisp][level2/derived.lisp]].
 + level 2b : optimizer :: After the expansion, resulting level1 patterns
      are post-processed by a pattern optimizer function. Level 2 provides
      an extensible user interface to switch between different optimizer.
