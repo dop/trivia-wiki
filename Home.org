@@ -43,7 +43,7 @@ the following functionality:
      destructuring-bind, which supports list, list*, variable, =_=, and
      constant patterns for s-exp parsing.
 + level 1 : core patterns :: =match1= supports =or1= and =guard1= patterns
-     only. These are the minimal set of patterns that is needed to
+     only. These are the minimal set of patterns required to
      implement a matcher. =match1= simply expands into nested =let= and
      =if= forms.
 + level 2a : pattern expander :: Provides several wrapper macros over
