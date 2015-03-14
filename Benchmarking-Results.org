@@ -7,7 +7,7 @@ All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom
 
 * Results Summary
 
-#+title: Runtime comparison
+#+caption: Runtime comparison
 | runtime [sec]       | fibonacci | gomoku | string-match |
 |---------------------+-----------+--------+--------------|
 | optima              |    11.5 |   39.8 |         82.5 |
@@ -23,7 +23,7 @@ generation is not accounted, and the same instances are used for all
 participants. Also, all results are verified by comparing the results to
 each other so that Trivia does not contain bugs.
 
-#+title: Memory consumption
+#+caption: Memory consumption
 | Consing [bytes]     | fibonacci | gomoku    | string-match |
 |---------------------+-----------+-----------+--------------|
 | optima              | 98,096    | 262,576   | 475,568      |
