@@ -61,4 +61,4 @@ Thanks to the canonical expression of level 1 pattern, optimizer functions can b
      /Swapping/ optimization in (Emilie 2006). Currently [[https://github.com/guicho271828/trivia.emilie2006][hosted in a
      separate repository]].  Achieved *60x* speedup in some domains. All
      tests are passing, however there may be a hidden bug compared to
-     =:trivial=.
+     =:trivial=. Writing a "correct" algorithm is hard.
