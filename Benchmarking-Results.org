@@ -13,7 +13,7 @@ All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom
 | trivia              |      9.96 |   41.7 |         7.93 |
 | trivia + emilie2006 |      *9.68* | *37.4* |        *1.57* |
 
-Results varies across the test domains, but the performance of trivia+emilie2006 is interesting especially in string-match. Interestingly, trivia (w/o optimization) is also fast in string-match.
+Results varies across the test domains, but the overall performance of trivia+emilie2006 outperforms Optima. Performance improvement in string-match is especially interesting, given that trivia (w/o optimization) is also fast.
 
 * Actual Log (+ Optimization Trace)
 
