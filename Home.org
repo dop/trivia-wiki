@@ -30,10 +30,9 @@ In light of this, I designed a compatible alternative to Optima with a
 better architecture, called Trivia.
 
 Optima is written in an imperative style with lots of loop macros. Pattern
-matcher eases the effort of writing a recursive algorithm, but it needs
-Optima itself, or need some other library.  One way to avoid this
+matcher eases the effort of writing a recursive algorithm, but in fact, writing Optima with a pattern matcher requires Optima itself, or need some other pattern matching library which may not be compatible with Optima.  One way to avoid this
 dependency is to include a primitive pattern matcher for
-bootstrapping optima.
+bootstrapping itself.
 
 The source code of Trivia is divided into 3 levels, level 0, 1 and 2, where
 lower level bootstraps the higher level. Each level has its own =match=
