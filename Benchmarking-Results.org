@@ -7,6 +7,7 @@ All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom
 
 * Results Summary
 
+#+title: Runtime comparison
 | runtime [sec]       | fibonacci | gomoku | string-match |
 |---------------------+-----------+--------+--------------|
 | optima              |    11.5 |   39.8 |         82.5 |
@@ -14,6 +15,20 @@ All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom
 | trivia + emilie2006 |      *9.68* | *37.4* |        *1.57* |
 
 Results varies across the test domains, but the overall performance of trivia+emilie2006 outperforms Optima. Performance improvement in string-match is especially interesting, given that trivia (w/o optimization) is also fast.
+
+The major reason for this difference is in the amount of consing: Optima
+conses 475,568 bytes in string-match, while Trivia (w/o optimization) is
+non-consing. Note that the amount of memory consumed during the test data
+generation is not accounted, and the same instances are used for all
+participants. Also, all results are verified by comparing the results to
+each other so that Trivia does not contain bugs.
+
+#+title: Memory consumption
+| Consing [bytes]     | fibonacci | gomoku    | string-match |
+|---------------------+-----------+-----------+--------------|
+| optima              | 98,096    | 262,576   | 475,568      |
+| trivia              | 76,768    | 256,624   | *0*          |
+| trivia + emilie2006 | *36,464*  | *196,720* | *0*          |
 
 * Actual Log (+ Optimization Trace)
 
