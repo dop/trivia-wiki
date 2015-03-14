@@ -1,14 +1,9 @@
-* Fibonacci
+All tests are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom II X6 2.8GHz and 4GB Memory.
+* Test Domains
 
-Computes a large Fibonacci number. I didnt apply the memoization technique: it is a quite basic implementation.
-
-* Gomoku
-
-Matches /winning pattern/ of 5x5 Gomoku table game against a list of randomly generated fields. 100000 fields are generated and fixed, then supplied to each matcher.
-
-* Stringmatch
-
-Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
++ Fibonacci :: Computes a large Fibonacci number. I didnt apply the memoization technique: it is a quite basic implementation.
++ Gomoku :: Matches a set of randomly generated 5x5 field of Gomoku table game against the /winning patterns/ to determine if a Black player is winning, or a White player is winning. 100000 fields are generated and fixed, then supplied to each matcher.
++ Stringmatch :: Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
 
 * Results Summary
 
@@ -18,9 +13,11 @@ Collected all words in Lorem Ipsum @ wikipedia, then created a function that ret
 | trivia              |      9.96 |   41.7 |         7.93 |
 | trivia + emilie2006 |      *9.68* | *37.4* |        *1.57* |
 
+Results varies across the test domains, but the performance of trivia+emilie2006 is interesting especially in string-match. Interestingly, trivia (w/o optimization) is also fast in string-match.
+
 * Actual Log (+ Optimization Trace)
 
-This trace shows the example of emilie2006's optimization scheme. The results does not necesarily match the above table.
+Below is an example of the trace log of emilie2006's optimization scheme. The runtime result does not necessarily match the numbers in the table above.
 
 #+BEGIN_SRC
 -------------------- EMILIE ----------------------------------------
