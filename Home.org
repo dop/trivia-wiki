@@ -35,7 +35,7 @@ dependency is to include a primitive pattern matcher for
 bootstrapping itself.
 
 The source code of Trivia is divided into 3 levels, level 0, 1 and 2, where
-lower level bootstraps the higher level. Each level has its own =match=
+the lower level bootstraps the higher level. Each level has its own =match=
 macro, e.g., level 0 has =match0= and so on.  In detail, each level handles
 the following functionality:
 
