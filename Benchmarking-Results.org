@@ -13,75 +13,159 @@ Collected all words in Lorem Ipsum @ wikipedia, then created a function that ret
 * Results
 
 #+BEGIN_SRC
+-------------------- EMILIE ----------------------------------------
+; Swapping (EQL #:IT1 0), (EQL #:IT2 1) under T
+; Fusing  T,  T
+; Fusing  T,  T
+Evaluation took:
+  11.130 seconds of real time
+  11.129130 seconds of total run time (11.125170 user, 0.003960 system)
+  99.99% CPU
+  33,390,657,846 processor cycles
+  36,464 bytes consed
+  
+; Grounding
+;  (((OR1 (GUARD1 (#:IT1 :IGNORABLE T ...) (TYPEP #:IT1 '(SIMPLE-VECTOR 25)) ...)
+;     (GUARD1 (#:IT7 :IGNORABLE T ...) (TYPEP #:IT7 '(SIMPLE-VECTOR 25)) ...) ...))
+;   1)
+; Grounding
+;  (((OR1 (GUARD1 (#:IT73 :IGNORABLE T ...) (TYPEP #:IT73 '(SIMPLE-VECTOR 25)) ...)
+;     (GUARD1 (#:IT79 :IGNORABLE T ...) (TYPEP #:IT79 '(SIMPLE-VECTOR 25)) ...) ...))
+;   0)
+; Fusing
+;   (TYPEP #:IT1 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT7 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT13 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT19 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT25 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT31 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT37 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT43 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT49 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT55 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT61 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT67 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT73 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT79 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT85 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT91 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT97 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT103 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT109 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT115 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT121 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT127 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT133 '(SIMPLE-VECTOR 25)),
+;   (TYPEP #:IT139 '(SIMPLE-VECTOR 25))
+; Fusing  T,  T
+; Fusing  T,  T
+; Fusing  T,  T,  T,  T,  T,  T
+; Fusing  T,  T,  T
+; Fusing  T,  T,  T,  T,  T,  T,  T
+; Fusing  T,  T,  T
+; Fusing  T,  T
+ Black : White : Notany = 29034000 : 30429540 : 536460 
+Evaluation took:
+  36.966 seconds of real time
+  36.965855 seconds of total run time (36.949955 user, 0.015900 system)
+  100.00% CPU
+  110,904,550,048 processor cycles
+  196,720 bytes consed
+  
+; Grounding
+;  (((OR1 (GUARD1 (#:IT1 :IGNORABLE T ...) (TYPEP #:IT1 '(SIMPLE-STRING 5)) ...)
+;     (GUARD1 (#:IT7 :IGNORABLE T ...) (TYPEP #:IT7 '(SIMPLE-STRING 5)) ...) ...))
+;   T)
+; Swapping (TYPEP #:IT13 '(SIMPLE-STRING 5)), (TYPEP #:IT19 '(SIMPLE-STRING 3)) under T
+; Swapping (TYPEP #:IT7 '(SIMPLE-STRING 5)), (TYPEP #:IT19 '(SIMPLE-STRING 3)) under T
+;;; ...
+; Swapping (TYPEP #:IT346 '(SIMPLE-STRING 8)), (TYPEP #:IT432 '(SIMPLE-STRING 7)) under T
+; Swapping (TYPEP #:IT322 '(SIMPLE-STRING 8)), (TYPEP #:IT432 '(SIMPLE-STRING 7)) under T
+; Fusing
+;   (TYPEP #:IT19 '(SIMPLE-STRING 3)),
+;   (TYPEP #:IT57 '(SIMPLE-STRING 3)),
+;   (TYPEP #:IT365 '(SIMPLE-STRING 3)),
+;   (TYPEP #:IT392 '(SIMPLE-STRING 3)),
+;   (TYPEP #:IT428 '(SIMPLE-STRING 3))
+; Fusing
+;   (TYPEP #:IT72 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT93 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT103 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT116 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT140 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT292 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT299 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT309 '(SIMPLE-STRING 6)),
+;   (TYPEP #:IT413 '(SIMPLE-STRING 6))
+;;; ...
+;;; ...
+; Fusing  (TYPEP #:IT28 '(SIMPLE-STRING 11)),  (TYPEP #:IT40 '(SIMPLE-STRING 11))
+; Swapping (EQL #:IT58 #\s), (EQL #:IT366 #\n) under T
+; Swapping (EQL #:IT20 #\s), (EQL #:IT366 #\n) under T
+; Swapping (EQL #:IT58 #\s), (EQL #:IT393 #\q) under T
+; Swapping (EQL #:IT20 #\s), (EQL #:IT393 #\q) under T
+; Swapping (EQL #:IT366 #\n), (EQL #:IT393 #\q) under T
+; Swapping (EQL #:IT58 #\s), (EQL #:IT429 #\e) under T
+; Swapping (EQL #:IT20 #\s), (EQL #:IT429 #\e) under T
+; Fusing  (EQL #:IT20 #\s),  (EQL #:IT58 #\s)
+; Swapping (EQL #:IT21 #\i), (EQL #:IT59 #\e) under T
+;;; ...
+; Fusing  (EQL #:IT220 #\c),  (EQL #:IT356 #\c)
+; Swapping (EQL #:IT221 #\o), (EQL #:IT357 #\u) under T
+; Swapping (EQL #:IT29 #\c), (EQL #:IT41 #\a) under T
+ Matched 7100000 times
+Evaluation took:
+  1.550 seconds of real time
+  1.548633 seconds of total run time (1.548624 user, 0.000009 system)
+  99.94% CPU
+  4,647,723,704 processor cycles
+  0 bytes consed
+  
 -------------------- OPTIMA ----------------------------------------
 Evaluation took:
-  17.419 seconds of real time
-  17.416962 seconds of total run time (17.409019 user, 0.007943 system)
-  99.99% CPU
-  52,261,034,928 processor cycles
-  89,968 bytes consed
+  10.052 seconds of real time
+  10.052829 seconds of total run time (10.052810 user, 0.000019 system)
+  100.01% CPU
+  30,159,591,174 processor cycles
+  98,096 bytes consed
   
  Black : White : Notany = 29034000 : 30429540 : 536460 
 Evaluation took:
-  39.796 seconds of real time
-  39.782663 seconds of total run time (39.778727 user, 0.003936 system)
-  99.97% CPU
-  119,394,547,856 processor cycles
-  197,408 bytes consed
+  39.315 seconds of real time
+  39.298361 seconds of total run time (39.286375 user, 0.011986 system)
+  99.96% CPU
+  117,951,743,059 processor cycles
+  262,576 bytes consed
   
  Matched 7100000 times
 Evaluation took:
-  81.857 seconds of real time
-  81.838362 seconds of total run time (81.830568 user, 0.007794 system)
-  99.98% CPU
-  245,586,168,784 processor cycles
-  451,184 bytes consed
+  82.826 seconds of real time
+  82.788210 seconds of total run time (82.684360 user, 0.103850 system)
+  99.95% CPU
+  248,490,424,774 processor cycles
+  475,568 bytes consed
   
 -------------------- TRIVIAL ----------------------------------------
 Evaluation took:
-  14.535 seconds of real time
-  14.531412 seconds of total run time (14.531412 user, 0.000000 system)
-  99.97% CPU
-  43,606,561,808 processor cycles
-  98,576 bytes consed
+  10.279 seconds of real time
+  10.278082 seconds of total run time (10.226178 user, 0.051904 system)
+  99.99% CPU
+  30,839,143,995 processor cycles
+  76,768 bytes consed
   
  Black : White : Notany = 29034000 : 30429540 : 536460 
 Evaluation took:
-  42.185 seconds of real time
-  42.168256 seconds of total run time (42.148374 user, 0.019882 system)
+  42.913 seconds of real time
+  42.895526 seconds of total run time (42.707732 user, 0.187794 system)
   99.96% CPU
-  126,563,079,030 processor cycles
-  244,080 bytes consed
+  128,745,325,086 processor cycles
+  256,624 bytes consed
   
  Matched 7100000 times
 Evaluation took:
-  8.130 seconds of real time
-  8.128121 seconds of total run time (8.124103 user, 0.004018 system)
-  99.98% CPU
-  24,390,252,690 processor cycles
-  1,248 bytes consed
-  
--------------------- EMILIE ----------------------------------------
-Evaluation took:
-  14.219 seconds of real time
-  14.211433 seconds of total run time (14.211419 user, 0.000014 system)
-  99.94% CPU
-  42,657,138,903 processor cycles
-  98,464 bytes consed
-  
- Black : White : Notany = 29034000 : 30429540 : 536460 
-Evaluation took:
-  42.187 seconds of real time
-  42.168216 seconds of total run time (42.168201 user, 0.000015 system)
-  99.95% CPU
-  126,566,833,181 processor cycles
-  242,736 bytes consed
-  
- Matched 7100000 times
-Evaluation took:
-  1.646 seconds of real time
-  1.645561 seconds of total run time (1.645561 user, 0.000000 system)
+  8.186 seconds of real time
+  8.185925 seconds of total run time (8.169921 user, 0.016004 system)
   100.00% CPU
-  4,938,058,790 processor cycles
+  24,559,567,889 processor cycles
   0 bytes consed
 #+END_SRC
