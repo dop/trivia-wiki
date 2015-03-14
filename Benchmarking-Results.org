@@ -14,11 +14,13 @@ Collected all words in Lorem Ipsum @ wikipedia, then created a function that ret
 
 | runtime [sec]       | fibonacci | gomoku | string-match |
 |---------------------+-----------+--------+--------------|
-| optima              |    *10.0* |   39.3 |         82.8 |
-| trivia              |      10.2 |   42.9 |         8.16 |
-| trivia + emilie2006 |      11.1 | *36.9* |        *1.5* |
+| optima              |    11.5 |   39.8 |         82.5 |
+| trivia              |      9.96 |   41.7 |         7.93 |
+| trivia + emilie2006 |      *9.68* | *37.4* |        *1.57* |
 
 * Actual Log (+ Optimization Trace)
+
+This trace shows the example of emilie2006's optimization scheme. The results does not necesarily match the above table.
 
 #+BEGIN_SRC
 -------------------- EMILIE ----------------------------------------
