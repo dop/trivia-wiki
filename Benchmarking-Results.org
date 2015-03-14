@@ -1,4 +1,4 @@
-All tests are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom II X6 2.8GHz and 4GB Memory.
+All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom II X6 2.8GHz and 4GB Memory.
 * Test Domains
 
 + Fibonacci :: Computes a large Fibonacci number. I didnt apply the memoization technique: it is a quite basic implementation.
