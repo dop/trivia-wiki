@@ -56,7 +56,7 @@ Thanks to the canonical expression of level 1 pattern, optimizer functions can b
 
 + =:trivial= optimizer :: runs no optimization, and returns the pattern as
      it is. Interestingly, experiments suggests the gap between Optima and
-     =:trivial= is minimal, and not so slow. Bug-ridden, and reliable.
+     =:trivial= is minimal, and not so slow. Trivially correct and reliable.
 + =:emilie2006= optimizer :: Implements /Fusion/ , /Intersection/ and
      /Swapping/ optimization in (Emilie 2006). Currently [[https://github.com/guicho271828/trivia.emilie2006][hosted in a
      separate repository]].  Preliminary results suggest that it achieves [[https://github.com/guicho271828/trivia/wiki/Benchmarking-Results][overall speedup up to *80x* ]]. All
