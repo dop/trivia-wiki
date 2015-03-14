@@ -5,7 +5,7 @@ community of ML languages. It abstracts object destructuring, algebraic
 data types, and conditional expression at once. While most pattern matching
 macros in Common Lisp are based on interpreter and slow, recently
 [[https://github.com/m2ym/optima][Optima]] has gain popularity largely due to its reasonable set of patterns
-covering the most usecases, extensible interface using defpattern, and also
+covering the most usecases, extensible interface using =defpattern=, and also
 the speed, achieved by applying the sophisticated compilation methods in
 (Fabrice et. al. '00).
 
