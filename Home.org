@@ -46,14 +46,13 @@ the following functionality:
      only. These are the minimal set of patterns required to
      implement a matcher. =match1= simply expands into nested =let= and
      =if= forms.
-+ level 2a : pattern expander :: Provides several wrapper macros over
-     =match1=. All derived patterns are expanded into level1 patterns,
-     including the primitive patterns in Optima.
++ level 2a : pattern expander :: Provides several derived patterns over the
+     level 1 patterns. All /primitive/ patterns in Optima was implemented as a set of derived patterns.
 + level 2b : optimizer :: After the expansion, resulting level1 patterns
      are post-processed by a pattern optimizer function. Level 2 provides
      an extensible user interface to switch between different optimizer.
 
-Now Trivia comes with 2 optimizers:
+Thanks to the canonical expression of level 1 pattern, optimizer functions can be very simple, and easy to implement. In fact, now Trivia comes with 2 optimizers:
 
 + =:trivial= optimizer :: runs no optimization, and returns the pattern as
      it is. Interestingly, experiments suggests the gap between Optima and
