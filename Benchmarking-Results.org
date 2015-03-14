@@ -10,7 +10,15 @@ Matches /winning pattern/ of 5x5 Gomoku table game against a list of randomly ge
 
 Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
 
-* Results
+* Results Summary
+
+| runtime [sec]       | fibonacci | gomoku | string-match |
+|---------------------+-----------+--------+--------------|
+| optima              |    *10.0* |   39.3 |         82.8 |
+| trivia              |      10.2 |   42.9 |         8.16 |
+| trivia + emilie2006 |      11.1 | *36.9* |        *1.5* |
+
+* Actual Log (+ Optimization Trace)
 
 #+BEGIN_SRC
 -------------------- EMILIE ----------------------------------------
