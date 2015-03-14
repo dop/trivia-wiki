@@ -1,7 +1,7 @@
 All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom II X6 2.8GHz and 4GB Memory.
 * Test Domains
 
-Test Domains are partly picked from (Emilie 2006). Source code of these domains is available @ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp][bench/definisitons.lisp]] . 
+Test Domains are partly picked from (Balland 2006). Source code of these domains is available @ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp][bench/definisitons.lisp]] . 
 
 + Fibonacci :: Computes a large Fibonacci number. I didnt apply any memoization technique: it is a quite basic implementation.
 + Gomoku :: Matches a set of randomly generated 5x5 fields of [[https://en.wikipedia.org/wiki/Gomoku][Gomoku table game]] against the /winning patterns/ of the game, in order to determine if a Black player is winning, or a White player is winning. 100000 fields are generated and fixed, then supplied to each matcher.
@@ -14,9 +14,9 @@ Test Domains are partly picked from (Emilie 2006). Source code of these domains 
 |---------------------+-----------+--------+--------------|
 | optima              |    11.5 |   39.8 |         82.5 |
 | trivia              |      9.96 |   41.7 |         7.93 |
-| trivia + emilie2006 |      *9.68* | *37.4* |        *1.57* |
+| trivia + balland2006 |      *9.68* | *37.4* |        *1.57* |
 
-Results varies across the test domains, but the overall performance of trivia+emilie2006 outperforms Optima. Performance improvement in string-match is especially interesting, given that trivia (w/o optimization) is also fast.
+Results varies across the test domains, but the overall performance of trivia+balland2006 outperforms Optima. Performance improvement in string-match is especially interesting, given that trivia (w/o optimization) is also fast.
 
 The major reason for this difference is in the amount of consing: Optima
 conses 475,568 bytes in string-match, while Trivia (w/o optimization) is
@@ -30,14 +30,14 @@ each other so that Trivia does not contain bugs.
 |---------------------+-----------+-----------+--------------|
 | optima              | 98,096    | 262,576   | 475,568      |
 | trivia              | 76,768    | 256,624   | *0*          |
-| trivia + emilie2006 | *36,464*  | *196,720* | *0*          |
+| trivia + balland2006 | *36,464*  | *196,720* | *0*          |
 
 * Actual Log (+ Optimization Trace)
 
-Below is an example of the trace log of emilie2006's optimization scheme. The runtime result does not necessarily match the numbers in the table above.
+Below is an example of the trace log of balland2006's optimization scheme. The runtime result does not necessarily match the numbers in the table above.
 
 #+BEGIN_SRC
--------------------- EMILIE ----------------------------------------
+-------------------- BALLAND ----------------------------------------
 ; Swapping (EQL #:IT1 0), (EQL #:IT2 1) under T
 ; Fusing  T,  T
 ; Fusing  T,  T
