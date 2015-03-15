@@ -7,7 +7,7 @@ macros in Common Lisp are based on interpreter and slow, recently
 [[https://github.com/m2ym/optima][Optima]] has gain popularity largely due to its reasonable set of patterns
 covering the most usecases, extensible interface using =defpattern=, and also
 the speed, achieved by applying the sophisticated compilation methods in
-(Fabrice et. al. '00).
+(Le Fessant et. al. '00).
 
 However, any library has its own problem.  To avoid the dependency as much
 as possible, currently, Optima itself is implemented in an imperative
