@@ -3,14 +3,14 @@ All experiments are run under Ubuntu Linux 14.04 and SBCL 1.2.8, with AMD Phenom
 
 Test Domains are partly picked from (Balland 2006). Source code of these domains is available @ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp][bench/definisitons.lisp]] . 
 
-+ Fibonacci :: Computes a large Fibonacci number. I didnt apply any memoization technique: it is a quite basic implementation.
-+ Gomoku :: Matches a set of randomly generated 5x5 fields of [[https://en.wikipedia.org/wiki/Gomoku][Gomoku table game]] against the /winning patterns/ of the game, in order to determine if a Black player is winning, or a White player is winning. 100000 fields are generated and fixed, then supplied to each matcher.
-+ Stringmatch :: Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
++ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L11][Fibonacci]] :: Computes a large Fibonacci number. I didnt apply any memoization technique: it is a quite basic implementation.
++ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L40][Gomoku]] :: Matches a set of randomly generated 5x5 fields of [[https://en.wikipedia.org/wiki/Gomoku][Gomoku table game]] against the /winning patterns/ of the game, in order to determine if a Black player is winning, or a White player is winning. 100000 fields are generated and fixed, then supplied to each matcher.
++ [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L214][Stringmatch]] :: Collected all words in Lorem Ipsum @ wikipedia, then created a function that returns true if the corpus contains the given word. The input vector is a list of words of the original sentence in /De finibus bonorum et malorum/.
 
 * Results Summary
 
 #+caption: Runtime comparison
-| runtime [sec]       | fibonacci | gomoku | string-match |
+| runtime [sec] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L11][fibonacci]] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L40][gomoku]] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L214][string-match]] |
 |---------------------+-----------+--------+--------------|
 | optima              |    11.5 |   39.8 |         82.5 |
 | trivia              |      9.96 |   41.7 |         7.93 |
@@ -26,7 +26,7 @@ participants. Also, all results are verified by comparing the results to
 each other so that Trivia does not contain bugs.
 
 #+caption: Memory consumption
-| Consing [bytes]     | fibonacci | gomoku    | string-match |
+| Consing [bytes] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L11][fibonacci]] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L40][gomoku]] | [[https://github.com/guicho271828/trivia/blob/master/bench/definitions.lisp#L214][string-match]] |
 |---------------------+-----------+-----------+--------------|
 | optima              | 98,096    | 262,576   | 475,568      |
 | trivia              | 76,768    | 256,624   | *0*          |
