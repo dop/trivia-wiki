@@ -23,6 +23,14 @@ The current matching value is bound to =var=.
 The result of evaluating =value= using =var= is then matched against =pattern=.
 =var= is optional when =value= does not need the current matching value.
 
+This is important when you write a =defpattern= that has a default value. Consider writing a pattern that matches against both of ='string= and ='(string *)= and has a subpattern =length=. length should be bound to ='*= even when the input is ='string=. With =<>= pattern, it can be implemented as below.
+
+#+begin_src lisp
+(defpattern string-type-specifier (length)
+   `(or (list 'string ,length)
+        (and 'string (<> ,length '*))))
+#+end_src
+
 * Access Pattern
 
 Just want to access an element? It's time to use =access= pattern: 
@@ -42,11 +50,14 @@ These expand into
 
 * Level 2 Matcher variants
 
-As in optima, there are several variants in the matcher construct:
+As in optima, there are several variants in the matcher construct. In addition to the constructs given by Optima:
 
 : [ec]?match value &body clauses
 : [ec]?match* (&rest values) &body multi-match-clauses
 : multiple-value-[ec]?match values-form &body multi-match-clauses
+: lambda-[ec?]match
+
+Trivia also provides =match*= , =lambda-match*=, =defun-match*=. Usage should be intuitive.
 
 Optima has =match*= variants internally, but it is not exporting the
 symbols.  It takes a list of forms as the first argument and matches the
@@ -60,7 +71,9 @@ checked in left-to-right.
   (((list x) (list y) (list (guard z (= z (+ x y))))) z)) ;; --> 5
 #+END_SRC
 
-=match+=, in contrast, is NOT a clause intended for the standard use of
+* match+
+
+=match+= and =match*+=, in contrast, is NOT a clause intended for the standard use of
 Trivia. It is rather for the programmer who is writing an optimizer.
 
 #+BEGIN_SRC lisp
