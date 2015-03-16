@@ -17,11 +17,11 @@ elements, binding the remaining unmatched variables with NIL.
 
 * Bind Pattern
 
-: (<> symbol value arg)
+: (<> pattern value &optional var)
 
 The current matching value is bound to =var=.
 The result of evaluating =value= using =var= is then matched against =pattern=.
-=var= can be omitted if =value= does not need the current matching value.
+=var= is optional when =value= does not need the current matching value.
 
 * Access Pattern
 
