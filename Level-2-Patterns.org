@@ -77,7 +77,8 @@ checked in left-to-right.
 Trivia. It is rather for the programmer who is writing an optimizer.
 
 #+BEGIN_SRC lisp
-macro match+ ((&rest whats) (&rest types) &body clauses)
+macro match+ (what type &body clauses)
+macro match*+ ((&rest whats) (&rest types) &body clauses)
 #+END_SRC
 
 types, not evaluated, is a list of type specifiers. Optimizer can benefit
