@@ -93,7 +93,7 @@ The next clause is a =list= pattern, and it checks if =x= is a list of length 3.
 is a constant pattern. The second subpattern is a variable pattern. And the
 last subpattern is a /wildcard/ pattern, which states it /doesn't care/. It
 *does* check the length test, but it runs no check against
-the corresponding element of the list.
+the corresponding element of the list, nor it binds any variable with =let=.
 
 Since this pattern matches against =(:a 2 10)=, execution
 goes to the body of the clause =body2=.  The body is treated as an implicit
