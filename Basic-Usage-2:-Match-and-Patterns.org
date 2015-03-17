@@ -21,15 +21,13 @@ This section contains standard, object-accessing patterns that are used most.
 
 =cons= checks if the object is of type =cons=, and then matches its
 subpatterns with =car= and =cdr= of that cons cell.
+
 ** list, list* pattern
 
 + Syntax :: list &rest /subpatterns/
 + Syntax :: list* &rest /subpatterns/
 
-Both patterns take multiple subpatterns and checks the type, its
-length and matches the contents to the subpatterns. =list= checks its
-contents (as shown in the example in Basic Usage 1).
-Similarly, =list*= checks the elements against the subpatterns, however the
+Both patterns checks if the object is of type =list=, has the same length and then matches the contents to the subpatterns. =list*= also checks the elements against the subpatterns, however the
 last pattern is matched against =nthcdr= of the list. Thus, the code below
 returns =3=.
 
