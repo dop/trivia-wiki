@@ -1,3 +1,4 @@
+* Brief Example
 
 Pattern Matching is basically a combination of nested =COND= and
 destructuring, such as =destructuring-bind= , =with-slot= and =with-accessors=. Consider the following example:
@@ -40,19 +41,30 @@ Let's break it down into details.
 Now above line starts a pattern matching construct. =match= is a macro and
 the first argument is a form that is evaluated. 
 
+The next line specifies that the first pattern checks if the given object
+is of type =foo=, with slot =bar=.
+
 #+BEGIN_SRC diff
 (match x
++  ((foo
+#+END_SRC
+
+This kind of pattern is called a
+=class= pattern, and matches against any objects under standard-object and structure-object.
+
+The first subform of that =class= pattern, or a /subpattern/, is =(bar b)= and it
+specifies the slot. It binds the value of the slot to a variable =b= with
+=let=, just like =with-slots=. Any non-self-evaluating symbols such as =b= are
+called =variable= patterns and creates a =let= binding in the macroexpanded code.
+
+#+BEGIN_SRC diff
+(match x
+-  ((foo
 +  ((foo (bar b)
 #+END_SRC
 
-The second line specifies that the first pattern checks if the given object
-is of type =foo=, with slot =bar=. This kind of patterns are called a
-=class= pattern, and matches against any objects under standard-object and structure-object.
-
-The second subform of that pattern, or a /subpattern/, is =(bar b)= and it
-specifies the slot. It binds the value of the slot to a variable =b= with
-=let=, just like =with-slot= does. Any such non-self-evaluating symbols are
-=variable= patterns and creates a =let= binding.
+The second subpattern specifies another slot =baz=. Here, the subpattern is
+=:a= which satisfies =constantp=. It is called a /constant pattern/ and the elements are compared with =eq,eql,equal,equalp= depending on the constant.
 
 #+BEGIN_SRC diff
 (match x
@@ -61,19 +73,15 @@ specifies the slot. It binds the value of the slot to a variable =b= with
 +   ...body1...)
 #+END_SRC
 
-The next subpattern specifies another slot =baz=. Here, the subpattern is
-=:a= which satisfies =constantp=. Therefore, it is called a constant
-pattern and the elements are compared with =eq,eql,equal,equalp= depending on the constant.
-
 If all of these query matches the input =x=, then =body1= is
 executed under the lexical environment where =b= is bound to the contents
 of the slot =bar= of =x=. This pair of a pattern and a body is called a clause.
 
 Now, remember that the value of =x= was a list =(:a 2 10)= . This is not of
 class =foo= and hence it does not satisfy the test.  In this case, there is
-no need to run the check like =(eq (slot-value x baz) :a)=. Pattern matcher
+no need to check the constant pattern =(baz :a)= --- =(eq (slot-value x 'baz) :a)=. Pattern matcher
 skips these unsatisfiable tests and start checking the second
-pattern clause.
+pattern clause immediately.
 
 #+BEGIN_SRC diff
 (match x
@@ -93,4 +101,25 @@ Since this pattern matches against =(:a 2 10)=, execution
 goes to the body of the clause =body2=.  The body is treated as an implicit
 progn and the last value of the body is returned as the value of
 =match=. If none of the pattern matches, it returns nil.
+
+Patterns can be nested. For example, the following code returns =4=.
+
+#+BEGIN_SRC lisp
+(match '(:a (3 4) 5)
+  ((list :a (list _ c) _)
+   c))
+#+END_SRC
+
+* Patterns
+
+Trivia maintains a full compatibility with Optima. I briefly summarize what kind of pattern exists in these matchers.
+
+** (<cons,list,list*,vector> &rest subpatterns)
+
+All these patterns takes multiple subpatterns and checks the type, its length and matches the contents to the subpatterns. Like =list= checks its contents (as shown in the above example), =cons= checks its =car= and =cdr= if the object is of type =cons=, =vector= checks its length and contents, =list*= checks the elements against the subpatterns but last, and also checks the =nthcdr= of the elements against the last pattern.
+
+** (<and, or> &rest subpattterns)
+
+They matches when all/some of the subpatterns matches against the element.
+
 
