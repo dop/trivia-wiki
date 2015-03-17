@@ -1,0 +1,96 @@
+
+Pattern Matching is basically a combination of nested =COND= and
+destructuring. Consider the following example:
+
+#  that tries
+# to check if the variable =X= is a list beginning with =:a=, and if that
+# fails then check if the variable is an object of class =C= with slot =:a=
+
+#+BEGIN_SRC lisp
+(defvar x '(:a 2 10))
+
+(cond
+  ((and (typep x 'foo)
+        (eq :a (slot-value x 'baz)))
+   (let ((b (slot-value x 'bar)))
+     ...body1...))
+  ((and (and (listp x)
+             (= 3 (length x)))
+        (eq (first x) :a))
+   (let ((b (second x))) ;; b is bound to 10
+     ...body2...)))
+#+END_SRC
+
+With pattern matching, you can write the identical program like follows:
+
+#+BEGIN_SRC lisp
+(match x
+  ((foo (bar b) (baz :a))
+   ...body1...)
+  ((list* :a b _)
+   ...body2...))
+#+END_SRC
+
+Let's break it down into details.
+
+#+BEGIN_SRC diff
++ (match x
+#+END_SRC
+
+Now above line starts a pattern matching construct. =match= is a macro and
+the first argument is a form that is evaluated. 
+
+#+BEGIN_SRC diff
+(match x
++  ((foo (bar b)
+#+END_SRC
+
+The second line specifies that the first pattern checks if the given object
+is of type =foo=, with slot =bar=. This kind of patterns are called a
+=class= pattern, and matches against any objects under standard-object and structure-object.
+
+The second subform of that pattern, or a /subpattern/, is =(bar b)= and it
+specifies the slot. It binds the value of the slot to a variable =b= with
+=let=, just like =with-slot= does. Any such non-self-evaluating symbols are
+=variable= patterns and creates a =let= binding.
+
+#+BEGIN_SRC diff
+(match x
+-  ((foo (bar b)
++  ((foo (bar b) (baz :a))
++   ...body1...)
+#+END_SRC
+
+The next subpattern specifies another slot =baz=. Here, the subpattern is
+=:a= which satisfies =constantp=. Therefore, it is called a constant
+pattern and the elements are compared with =eq,eql,equal,equalp= depending on the constant.
+
+If all of these query matches the input =x=, then =body1= is
+executed under the lexical environment where =b= is bound to the contents
+of the slot =bar= of =x=. This pair of a pattern and a body is called a clause.
+
+Now, remember that the value of =x= was a list =(:a 2 10)= . This is not of
+class =foo= and hence it does not satisfy the test.  In this case, there is
+no need to run the check like =(eq (slot-value x baz) :a)=. Pattern matcher
+skips these unsatisfiable tests and start checking the second
+pattern clause.
+
+#+BEGIN_SRC diff
+(match x
+  ((foo (bar b) (baz :a))
+   ...body1...)
++  ((list :a b _)
++   ...body2...))
+#+END_SRC
+
+The next clause checks if =x= is a list of length 3. The first subpattern
+is a constant pattern. The second subpattern is a variable pattern. And the
+last subpattern is a /wildcard/ pattern, which specifies /don't care/. It
+*does* check the length test, but no check will be run against
+the corresponding element of the list.
+
+Since this pattern matches against =(:a 2 10)=, execution
+goes to the body of the clause =body2=.  The body is treated as an implicit
+progn and the last value of the body is returned as the value of
+=match=. If none of the pattern matches, it returns nil.
+
