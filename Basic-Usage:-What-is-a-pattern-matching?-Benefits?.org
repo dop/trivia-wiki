@@ -103,7 +103,7 @@ goes to the body of the clause =body2=.  The body is treated as an implicit
 progn and the last value of the body is returned as the value of
 =match=. If none of the pattern matches, it returns nil.
 
-Patterns can be nested. For example, the following code returns =4=.
+Patterns can be nested. For example, the following code returns =4=. This property allows us to access and test the elements of a deeply nested structure in a simple language, without writing the accessing code explicitly.
 
 #+BEGIN_SRC lisp
 (match '(:a (3 4) 5)
