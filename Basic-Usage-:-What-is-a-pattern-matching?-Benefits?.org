@@ -1,5 +1,3 @@
-* Brief Example
-
 Pattern Matching is basically a combination of nested =COND= and
 destructuring, such as =destructuring-bind= , =with-slot= and =with-accessors=. Consider the following example:
 
@@ -110,4 +108,4 @@ Patterns can be nested. For example, the following code returns =4=.
    c))
 #+END_SRC
 
-Go to the [[Patterns][next page]] for a full catalogue of other patterns.
+Go to the [[Basic Usage: Patterns][next page]] for a full catalogue of other patterns.
