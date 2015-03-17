@@ -2,7 +2,7 @@ Pattern Matching is basically a combination of nested =COND= and
 destructuring, such as =destructuring-bind= , =with-slot= and =with-accessors=. 
 There are already [[http://ja.reddit.com/r/lisp/comments/2xl23i/explain_pattern_matching_eli5_style/cp1vb9w][ample of]] [[http://enthusiasm.cozy.org/archives/2013/07/optima][introduction to]] [[http://www.paulgraham.com/onlisptext.html][pattern]] [[https://github.com/tpapp/let-plus][matching]], but I'd like to give another try with a concrete example.
 
-Consider the following example:
+Consider the following:
 
 #  that tries
 # to check if the variable =X= is a list beginning with =:a=, and if that
