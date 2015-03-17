@@ -23,7 +23,7 @@ Consider the following:
      ...body2...)))
 #+END_SRC
 
-With pattern matching, you can write the identical program like follows:
+With pattern matching, you can write the same program shorter, as follows:
 
 #+BEGIN_SRC lisp
 (match x
