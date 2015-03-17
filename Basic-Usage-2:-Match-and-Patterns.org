@@ -164,7 +164,12 @@ It does not match when /subpattern/ matches. The variables used in
 + Syntax :: guard /subpattern1/ /test-form/ {/generator-form/ /subpattern2/}*
 + /test-form/ :: a predicate form, evaluated.
 + /generator-form/ :: a form that produce a value, which are then matched against
-     the next /subpattern2/. Evaluated when the /test-form/ returns true.
+     the next /subpattern2/.
+
+The object is first matched against /subpattern1/. If that fails, whole
+clause declines the matching. Otherwize, /test-form/ is evaluated. When the
+result is true, then each of /generator-form/ is evaluated and matched
+against corresponding /subpattern2/.
 
 *Example*:
 
