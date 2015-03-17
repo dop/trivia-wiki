@@ -1,4 +1,5 @@
 For a quickstart, go to the [[./Basic-Usage-1:-What-is-a-pattern-matching%3F-Benefits%3F][Basics section]].
+Below is for the people already familier with Optima.
 
 * Introduction
 
