@@ -15,17 +15,18 @@ In the following sections, I briefly summarize what kind of patterns are availab
 
 This section contains standard, object-accessing patterns that are used most.
 
-** cons pattern
+** Cons Pattern
 
 + Syntax :: cons /cdr/ /car/
 
 =cons= checks if the object is of type =cons=, and then matches its
 subpatterns with =car= and =cdr= of that cons cell.
 
-** list, list* pattern
+** List, List* Pattern
 
 + Syntax :: list &rest /subpatterns/
-+ Syntax :: list* &rest /subpatterns/
+            
+            list* &rest /subpatterns/
 
 Both patterns checks if the object is of type =list=, has the same length and then matches the contents to the subpatterns. =list*= also checks the elements against the subpatterns, however the
 last pattern is matched against =nthcdr= of the list. Thus, the code below
@@ -39,10 +40,11 @@ returns =3=.
 
 Both patterns can be /derived/ from =cons= pattern. See also: [[./defpattern]]
 
-** vector, vector* patterns
+** Vector, Vector* Patterns
 
 + Syntax :: vector &rest /subpatterns/
-+ Syntax :: vector* &rest /subpatterns/
+            
+            vector* &rest /subpatterns/
 
 =vector= checks if the object is a vector, if the length is the same, and
 if the contents matches against each subpatterns. =vector*= is similar, but
@@ -60,10 +62,11 @@ Using these variants properly will results in faster code.
 (<vector-pattern> &rest subpatterns)
 #+END_SRC
 
-** class pattern
+** Class Pattern
 
 + Syntax :: class /type/ &rest /slot-descriptions/
-+ Syntax :: structure /type/ &rest /slot-descriptions/
+     
+            structure /type/ &rest /slot-descriptions/
 + /slot-descriptions/ :: either of the following:
   + make-instance style plist : ={keyword subpattern}*=
   + with-slots style : =(slot-name subpattern)*=
@@ -85,20 +88,22 @@ We just post an example for each of three style here.
    (values bar baz)))
 #+END_SRC
 
-** type pattern, satisfies pattern
+** Type Pattern, Satisfies Pattern
 
 + Syntax :: type /type/
-+ Syntax :: satisfies /predicate/
+            
+            satisfies /predicate/
 + /type/ :: type specifier, not evaluated.
 + /predicate/ :: a name of a boolean function of 1 argument, not evaluated.
 
 =type= pattern matches if the object is of /type/. =satisfies= matches if
 the /predicate/ returns true for the object.
 
-** assoc, property, alist, plist pattern
+** Assoc, Property, Alist, Plist Pattern
 
 + Syntax :: assoc /item/ /subpattern/ &key /key/ /test/
-+ Syntax :: property /key/ /subpattern/ &optional /default/
+            
+            property /key/ /subpattern/ &optional /default/
 
 All these patterns first checks if the pattern is a list.  If that is
 satisfied, it then obtain the contents with =(cdr (assoc item X key test)=
@@ -108,16 +113,18 @@ obtained by this is then matched against /subpattern/.
 Two patterns are derived from these patterns.
 
 + Syntax :: alist &rest /args/
-+ Syntax :: plist &rest /args/
+            
+            plist &rest /args/
 
 =alist= and =plist= patterns expand into a collection of =assoc= and
 =property= patterns, respectively, connected by an =and= pattern.
 
 * Logic Patterns
-** and, or pattern
+** And, Or pattern
 
 + Syntax :: and &rest /subpattterns/
-+ Syntax :: or  &rest /subpattterns/
+            
+            or  &rest /subpattterns/
 
 They matches when all/some of the subpatterns matches against the element.
 For example,
@@ -129,7 +136,7 @@ For example,
    a))
 #+END_SRC
 
-matches against both ='(1 2)= and ='(4 . 3)= and returns 2 and
+matches against both =(1 2)= and =(4 . 3)= and returns 2 and
 4, respectively. Also,
 
 #+BEGIN_SRC lisp
@@ -146,13 +153,13 @@ is same as below.
   ((list 1 2)
    t))
 #+END_SRC
-** not pattern
+** Not pattern
 + Syntax :: not /subpattern/
 
 It does not match when /subpattern/ matches. The variables used in
 /subpattern/ is not visible in the body. 
 
-** guard pattern
+** Guard pattern
 
 + Syntax :: guard /subpattern1/ /test-form/ {/generator-form/ /subpattern2/}*
 + /test-form/ :: a predicate form, evaluated.
