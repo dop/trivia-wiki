@@ -108,4 +108,4 @@ Patterns can be nested. For example, the following code returns =4=.
    c))
 #+END_SRC
 
-Go to [[Basic-Usage:-Patterns][next page]] for a full catalogue of other patterns.
+Go to [[./Basic-Usage:-Patterns][next page]] for a full catalogue of other patterns.
