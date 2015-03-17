@@ -40,7 +40,7 @@ Now above line starts a pattern matching construct. =match= is a macro and
 the first argument is a form that is evaluated. 
 
 The next line specifies that the first pattern checks if the given object
-is of type =foo=, with slot =bar=.
+is of type =foo=.
 
 #+BEGIN_SRC diff
 (match x
