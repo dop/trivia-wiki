@@ -2,8 +2,8 @@ Trivia maintains a full compatibility with Optima. If you are already familier w
 
 * Macro /Match/
 
-+ Syntax :: *match* /argument/ &body /clauses*/ ---> /result/
-+ clauses :: -- (/pattern/ &body /bodyform*/)
++ Syntax :: *match* /argument/ &body /clause*/ ---> /result/
++ clause :: -- ( /pattern/ &body /bodyform*/ )
 + pattern :: a pattern language.
 + bodyform :: an implicit progn.
 
