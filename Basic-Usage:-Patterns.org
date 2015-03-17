@@ -26,7 +26,7 @@ matches against both ='(1 2)= and ='(4 . 3)= and returns 2 and
 #+BEGIN_SRC lisp
 (match x
   ((and (list 1 _)
-        (cons _ 2))
+        (list _ 2))
    t))
 #+END_SRC
 
