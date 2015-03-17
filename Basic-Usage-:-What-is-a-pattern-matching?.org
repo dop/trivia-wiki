@@ -91,10 +91,10 @@ pattern clause immediately.
 +   ...body2...))
 #+END_SRC
 
-The next clause checks if =x= is a list of length 3. The first subpattern
+The next clause is a =list= pattern, and it checks if =x= is a list of length 3. Its first subpattern
 is a constant pattern. The second subpattern is a variable pattern. And the
-last subpattern is a /wildcard/ pattern, which specifies /don't care/. It
-*does* check the length test, but no check will be run against
+last subpattern is a /wildcard/ pattern, which states it /doesn't care/. It
+*does* check the length test, but it runs no check against
 the corresponding element of the list.
 
 Since this pattern matches against =(:a 2 10)=, execution
