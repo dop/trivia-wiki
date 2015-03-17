@@ -163,7 +163,7 @@ It does not match when /subpattern/ matches. The variables used in
 
 + Syntax :: guard /subpattern1/ /test-form/ {/generator-form/ /subpattern2/}*
 + /test-form/ :: a predicate form, evaluated.
-+ /generator-form/ :: a form that produces values that are matched against
++ /generator-form/ :: a form that produce a value, which are then matched against
      the next /subpattern2/. Evaluated when the /test-form/ returns true.
 
 *Example*:
