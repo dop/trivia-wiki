@@ -54,7 +54,7 @@ This kind of pattern is called a
 =class= pattern, and matches against any objects under standard-object and structure-object.
 
 The first subform of that =class= pattern, or a /subpattern/, is =(bar b)= and it
-specifies the slot. It binds the value of the slot to a variable =b= with
+specifies the pattern for a slot =bar=. It binds the =slot-value= of the slot to a variable =b= with
 =let=, just like =with-slots=. Any non-self-evaluating symbols such as =b= are
 called =variable= patterns and creates a =let= binding in the macroexpanded code.
 
