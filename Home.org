@@ -1,3 +1,5 @@
+For a quickstart, go [[./Basic-Usage-1:-What-is-a-pattern-matching%3F-Benefits%3F]]
+
 * Introduction
 
 Pattern matching is a powerful syntactic construct widely accepted in the
