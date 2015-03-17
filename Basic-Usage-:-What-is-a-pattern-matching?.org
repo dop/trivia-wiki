@@ -110,16 +110,4 @@ Patterns can be nested. For example, the following code returns =4=.
    c))
 #+END_SRC
 
-* Patterns
-
-Trivia maintains a full compatibility with Optima. I briefly summarize what kind of pattern exists in these matchers.
-
-** (<cons,list,list*,vector> &rest subpatterns)
-
-All these patterns takes multiple subpatterns and checks the type, its length and matches the contents to the subpatterns. Like =list= checks its contents (as shown in the above example), =cons= checks its =car= and =cdr= if the object is of type =cons=, =vector= checks its length and contents, =list*= checks the elements against the subpatterns but last, and also checks the =nthcdr= of the elements against the last pattern.
-
-** (<and, or> &rest subpattterns)
-
-They matches when all/some of the subpatterns matches against the element.
-
-
+Go to the [[Patterns][next page]] for a full catalogue of other patterns.
