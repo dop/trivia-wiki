@@ -99,8 +99,8 @@ last subpattern is a /wildcard/ pattern, which states it /doesn't care/. It
 the corresponding element of the list, nor does it bind any variables with =let=.
 
 Since this pattern matches against =(:a 2 10)=, execution
-goes to the body of the clause =body2=.  The body is treated as an implicit
-progn and the last value of the body is returned as the value of
+goes to the body of the clause =body2=, which is treated as an implicit
+progn. The last value of the body of the first matching clause is returned as the value of
 =match=. If none of the pattern matches, it returns nil.
 
 Patterns can be nested. For example, the following code returns =4=. This property allows us to access and test the elements of a deeply nested structure in a simple language, without writing the accessing code explicitly.
