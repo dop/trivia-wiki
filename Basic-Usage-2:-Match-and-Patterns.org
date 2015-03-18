@@ -22,6 +22,15 @@ This section contains standard, object-accessing patterns that are most commonly
 =cons= checks if the object is of type =cons=, and then matches its
 subpatterns with =car= and =cdr= of that cons cell.
 
+#+BEGIN_SRC lisp
+(match '(1 2 3)
+  ((cons x y)
+   (print x)
+   (print y)))
+;; |-> 1
+;; |-> (2 3)
+#+END_SRC
+
 ** List, List* Pattern
 
 + Syntax :: list &rest /subpatterns/
@@ -46,10 +55,27 @@ Both patterns can be /derived/ from =cons= pattern. See also: [[./defpattern]]
             
             vector* &rest /subpatterns/
 
-=vector= checks if the object is a vector, if the length is the same, and
+=vector= checks if the object is a vector, if the lengths are the same, and
 if the contents matches against each subpatterns. =vector*= is similar, but
 called a /soft-match/ variant that allows if the length is
 larger-than-equal to the length of subpatterns.
+
+#+BEGIN_SRC lisp
+(match #(1 2 3)
+  ((vector _ x _)
+   x))
+;; -> 2
+
+(match #(1 2 3 4)
+  ((vector _ x _)
+   x))
+;; -> NIL : does not match
+
+(match #(1 2 3 4)
+  ((vector* _ x _)
+   x))
+;; -> 2 : soft match.
+#+END_SRC
 
 There are several specialized subpatterns for vector/vector*.
 Using these variants properly will results in faster code.
