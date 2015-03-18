@@ -2,7 +2,7 @@ This page describes the set of patterns that is allowed to be used to implement 
 
 Available Patterns are restricted to: list, list*, cons, constant, variable, wildcard (_).
 
-Any symbols are considered as variable, except constant symbols (namely,
+Any symbols are considered as variables, except constant symbols (namely,
  =t=, =nil= and keywords) and those named as =_= (checked by symbol name).
  These are identical to the corresponding patterns in Optima.
 
