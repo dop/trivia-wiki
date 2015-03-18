@@ -132,9 +132,9 @@ the /predicate/ returns true for the object. =lambda= form is acceptable.
             property /key/ /subpattern/ &optional /default/
 
 All these patterns first checks if the pattern is a list.  If that is
-satisfied, it then obtain the contents with =(cdr (assoc item X key test)=
-(assoc pattern) or =(getf key X)= where X is bound the container. The value
-obtained by this is then matched against /subpattern/.
+satisfied, it then obtain the contents with =(cdr (assoc item X key test))=
+(assoc pattern) or =(getf key X)= (property pattern) where X is bound the container. The value
+obtained by these accessors is then matched against /subpattern/.
 
 Two patterns are derived from these patterns.
 
