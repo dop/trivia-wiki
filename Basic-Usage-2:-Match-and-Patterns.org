@@ -1,15 +1,6 @@
 Trivia maintains a full compatibility with Optima. If you are already familier with Optima, there is no need to understand anything new, other than the additional patterns introduced in Trivia.
-
-* Macro /Match/
-
-+ Syntax :: *match* /argument/ &body /{clause}*/ ---> /result/
-+ clause :: -- ( /pattern/ &body /{bodyform}*/ )
-+ pattern :: a pattern language.
-+ bodyform :: an implicit progn.
-
-Matches /argument/ against the patterns provided in /clauses/. Evaluate the /bodyform/ of the first clause whose pattern matches against /argument/. /bodyform/ is treated as an implicit progn.
-
-In the following sections, I briefly summarize what kind of patterns are available in these matchers.
+As the baseline, this page describe the syntax of macro =match= and its variants. 
+In the following sections, I briefly summarize what kind of patterns are available in these matcher macros.
 
 * Type-based Destructuring Patterns
 
