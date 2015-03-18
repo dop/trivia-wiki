@@ -123,7 +123,7 @@ We just post an example for each of three style here.
 + /predicate/ :: a name of a boolean function of 1 argument, not evaluated.
 
 =type= pattern matches if the object is of /type/. =satisfies= matches if
-the /predicate/ returns true for the object.
+the /predicate/ returns true for the object. =lambda= form is acceptable.
 
 ** Assoc, Property, Alist, Plist Pattern
 
