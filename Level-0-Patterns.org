@@ -1,5 +1,6 @@
+This page describes the set of patterns that is allowed to be used to implement the subsequent levels of  pattern matchers. Thus, it only matterns for the implementers of trivia itself.
 
-Patterns : list, list*, cons, constant, variable, wildcard (_)
+Available Patterns are restricted to: list, list*, cons, constant, variable, wildcard (_).
 
 Any symbols are considered as variable, except constant symbols (namely,
  =t=, =nil= and keywords) and those named as =_= (checked by symbol name).
