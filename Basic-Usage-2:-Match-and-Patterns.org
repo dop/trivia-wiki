@@ -13,7 +13,7 @@ In the following sections, I briefly summarize what kind of patterns are availab
 
 * Type-based Destructuring Patterns
 
-This section contains standard, object-accessing patterns that are used most.
+This section contains standard, object-accessing patterns that are most commonly used.
 
 ** Cons Pattern
 
