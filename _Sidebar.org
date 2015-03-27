@@ -1,4 +1,4 @@
 + [[./][Home]]
   + [[./What-is-pattern-matching?-Benefits?][What is pattern matching? Benefits?]]
-  + [[./Patterns]]
+  + [[./Various-Patterns][Various Patterns]]
   + [[./Match-and-Variants][Match and Variants]]
