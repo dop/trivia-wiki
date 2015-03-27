@@ -1,4 +1,7 @@
 + [[./][Home]]
 + [[./What-is-pattern-matching%3F-Benefits%3F][What is pattern matching? Benefits?]]
 + [[./Various-Patterns][Various Patterns]]
+  + [[./Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]]
+  + [[./Logic-Based-Patterns][Logic Based Patterns]]
+  + [[./Special-Patterns][Special Patterns]]
 + [[./Match-and-Variants][Match and Variants]]
