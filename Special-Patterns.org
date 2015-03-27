@@ -30,8 +30,8 @@ The result of evaluating =value= using =var= is then matched against =pattern=.
 =var= is optional and can be omitted when =value= is a constant and does not need the current matching value.
 
 This is important when you write a =defpattern= that has a default
-value. Consider writing a derived pattern that matches against both of a form =(quote string)=
-and a form =(quote (string *))= . It has a subpattern =length=, which should be bound to a symbol =*= even when the input is =(quote string)=. With =<>= pattern, it can be implemented as below.
+value. Consider writing a derived pattern that matches against both a symbol =string=
+and a form =(string *)=. It has a subpattern =length=, which should be bound to a symbol =*= even when the input is =(quote string)=. With =<>= pattern, it can be implemented as below.
 
 #+begin_src lisp
 (defpattern string-type-specifier (length)
