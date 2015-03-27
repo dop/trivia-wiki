@@ -1,9 +1,47 @@
 
-* Macro /Match/
+** Macro /match,ematch,cmatch/
 
-+ Syntax :: *match* /argument/ &body /{clause}*/ ---> /result/
++ Syntax ::
+  *match* /argument/ &body /{clause}*/ ---> /result/
+
+  *ematch* /argument/ &body /{clause}*/ ---> /result/
+
+  *cmatch* /argument/ &body /{clause}*/ ---> /result/
++ argument :: a form, evaluated.
 + clause :: -- ( /pattern/ &body /{bodyform}*/ )
 + pattern :: a pattern language.
 + bodyform :: an implicit progn.
 
 Matches /argument/ against the patterns provided in /clauses/. Evaluate the /bodyform/ of the first clause whose pattern matches against /argument/. /bodyform/ is treated as an implicit progn.
+
+If no clauses have matched the given argument, /match/ returns /nil/. In contrast, /ematch/ signals an error /match-error/, and /cmatch/ signals a correctable /match-error/.
+
+** Macro /match*,ematch*,cmatch*/
+
++ Syntax ::
+   *match** (&rest /arguments/) &body /{multiclause}*/ ---> /result/
+   
+   *ematch** (&rest /arguments/) &body /{multiclause}*/ ---> /result/
+   
+   *cmatch** (&rest /arguments/) &body /{multiclause}*/ ---> /result/
++ arguments :: a list of forms, evaluated.
++ multiclause :: -- ((&rest /patterns/) &body /{bodyform}*/ )
++ patterns :: a list of pattern languages.
++ bodyform :: an implicit progn.
+
+/arguments/ are evaluated in left-to-right manner, and the /patterns/ are matched against the results of evaluation of /arguments/ in left-to-right manner. When the number of /patterns/ in a clause is insufficient, it is padded with wildcard patterns, i.e., no check is conducted. Evaluate the /bodyform/ of the first clause when all patterns match successfully. Other rules are similar to /match,ematch/ and /cmatch/.
+
+** Macro /multiple-value-match, multiple-value-ematch, multiple-value-cmatch/
+
++ Syntax ::
+   *multiple-value-match* /values-form/ &body /{multiclause}*/ ---> /result/
+   
+   *multiple-value-ematch* /values-form/ &body /{multiclause}*/ ---> /result/
+   
+   *multiple-value-cmatch* /values-form/ &body /{multiclause}*/ ---> /result/
++ arguments :: a list of forms, evaluated.
++ multiclause :: -- ((&rest /patterns/) &body /{bodyform}*/ )
++ patterns :: a list of pattern languages.
++ bodyform :: an implicit progn.
+
+/values-form/ is evaluated, and the each value of returned values are matched against the patterns provided in /multiclauses/. Evaluate the /bodyform/ of the first clause when all patterns match successfully. Other rules are similar to /match*,ematch*/ and /cmatch*/.
