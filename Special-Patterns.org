@@ -3,9 +3,10 @@ This section contains patterns that has specific roles in itself.
 
 ** Place Pattern
 
-+ Syntax :: place /subpattern/
++ Syntax :: place /variable/
 
-The subpattern is accessed by =symbol-macrolet= instead of =let=.
+Just the same as using /variable/ as a variable pattern, except 
+the variable is accessed by =symbol-macrolet= instead of =let=. This allows the use of =setf= to modify the matched object.
 
 *Example*:
 
