@@ -31,7 +31,7 @@ The result of evaluating =value= using =var= is then matched against =pattern=.
 
 This is important when you write a =defpattern= that has a default
 value. Consider writing a derived pattern that matches against both a symbol =string=
-and a form =(string *)=. It has a subpattern =length=, which should be bound to a symbol =*= even when the input is =(quote string)=. With =<>= pattern, it can be implemented as below.
+and a form =(string *)=. It has a subpattern =length=, which should be bound to a symbol =*= even when the input is =string=. With =<>= pattern, it can be implemented as below.
 
 #+begin_src lisp
 (defpattern string-type-specifier (length)
