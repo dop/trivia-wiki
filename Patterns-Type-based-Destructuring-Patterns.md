@@ -1,0 +1,133 @@
+* Type-based Destructuring Patterns
+
+This section contains standard, object-accessing patterns that are most commonly used.
+
+** Cons Pattern
+
++ Syntax :: cons /cdr/ /car/
+
+=cons= checks if the object is of type =cons=, and then matches its
+subpatterns with =car= and =cdr= of that cons cell.
+
+#+BEGIN_SRC lisp
+(match '(1 2 3)
+  ((cons x y)
+   (print x)
+   (print y)))
+;; |-> 1
+;; |-> (2 3)
+#+END_SRC
+
+** List, List* Pattern
+
++ Syntax :: list &rest /subpatterns/
+            
+            list* &rest /subpatterns/
+
+Both patterns checks if the object is of type =list=, has the same length and then matches the contents to the subpatterns. =list*= also checks the elements against the subpatterns, however the
+last pattern is matched against =nthcdr= of the list. Thus, the code below
+returns =3=.
+
+#+BEGIN_SRC lisp
+(match '(1 2 . 3)
+  ((list* _ _ x)
+   x))
+#+END_SRC
+
+Both patterns can be /derived/ from =cons= pattern. See also: [[./defpattern]]
+
+** Vector, Vector* Patterns
+
++ Syntax :: vector &rest /subpatterns/
+            
+            vector* &rest /subpatterns/
+
+=vector= checks if the object is a vector, if the lengths are the same, and
+if the contents matches against each subpatterns. =vector*= is similar, but
+called a /soft-match/ variant that allows if the length is
+larger-than-equal to the length of subpatterns.
+
+#+BEGIN_SRC lisp
+(match #(1 2 3)
+  ((vector _ x _)
+   x))
+;; -> 2
+
+(match #(1 2 3 4)
+  ((vector _ x _)
+   x))
+;; -> NIL : does not match
+
+(match #(1 2 3 4)
+  ((vector* _ x _)
+   x))
+;; -> 2 : soft match.
+#+END_SRC
+
+There are several specialized subpatterns for vector/vector*.
+Using these variants properly will results in faster code.
+
+#+BEGIN_SRC lisp
+<vector-pattern> : vector      | simple-vector
+                   bit-vector  | simple-bit-vector
+                   string      | simple-string
+                   base-string | simple-base-string | sequence 
+(<vector-pattern> &rest subpatterns)
+#+END_SRC
+
+** Class Pattern
+
++ Syntax :: class /type/ &rest /slot-descriptions/
+     
+            structure /type/ &rest /slot-descriptions/
++ /slot-descriptions/ :: either of the following:
+  + make-instance style plist : ={keyword subpattern}*=
+  + with-slots style : =(slot-name subpattern)*=
+  + names as the variables : =slot-name*=
+
+=structure= pattern is just a synonym to the =class= pattern.
+
+We just post an example for each of three style here.
+
+#+BEGIN_SRC lisp
+(defstruct foo bar baz)
+(defvar *x* (make-foo :bar 0 :baz 1)
+(match *x*
+  ((foo :bar a :baz b) ;; make-instance style
+   (values a b))
+  ((foo (bar a) (baz b)) ;; with-slots style
+   (values a b))
+  ((foo bar baz) ;; slot name
+   (values bar baz)))
+#+END_SRC
+
+** Type Pattern, Satisfies Pattern
+
++ Syntax :: type /type/
+            
+            satisfies /predicate/
++ /type/ :: type specifier, not evaluated.
++ /predicate/ :: a name of a boolean function of 1 argument, not evaluated.
+
+=type= pattern matches if the object is of /type/. =satisfies= matches if
+the /predicate/ returns true for the object. =lambda= form is acceptable.
+
+** Assoc, Property, Alist, Plist Pattern
+
++ Syntax :: assoc /item/ /subpattern/ &key /key/ /test/
+            
+            property /key/ /subpattern/ &optional /default/
+
+All these patterns first checks if the pattern is a list.  If that is
+satisfied, it then obtain the contents with =(cdr (assoc item X key test))=
+(assoc pattern) or =(getf key X)= (property pattern) where X is bound the container. The value
+obtained by these accessors is then matched against /subpattern/.
+
+Two patterns are derived from these patterns.
+
++ Syntax :: alist &rest /args/
+            
+            plist &rest /args/
+
+=alist= and =plist= patterns expand into a collection of =assoc= and
+=property= patterns, respectively, connected by an =and= pattern.
