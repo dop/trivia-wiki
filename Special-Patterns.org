@@ -43,11 +43,10 @@ and a form =(string *)=. It has a subpattern =length=, which should be bound to 
 
 Just want to access an element? It's time to use =access= pattern: 
 
-+ Syntax :: access /#'accessor/ /subpattern/
-+ Syntax :: access /'accessor/ /subpattern/
-+ accessor :: a function name.
++ Syntax :: access /accessor/ /subpattern/
++ accessor :: a function designator.
 
-The object is not checked. The value of =funcall= ing the current object is
+No check is conducted on the object. The value of =funcall= ing the current object is
 matched against /subpattern/.
 
 Example:
