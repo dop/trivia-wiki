@@ -46,7 +46,7 @@ Just want to access an element? It's time to use =access= pattern:
 + Syntax :: access /accessor/ /subpattern/
 + accessor :: a function designator.
 
-No check is conducted on the object. The value of =funcall= ing the current object is
+No check is conducted on the object. The value of =funcall= ing the accessor with the current object is
 matched against /subpattern/.
 
 Example:
