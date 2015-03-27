@@ -2,35 +2,47 @@ Pattern Matching is basically a combination of nested =COND= and
 destructuring, such as =destructuring-bind= , =with-slot= and =with-accessors=. 
 There are already [[http://ja.reddit.com/r/lisp/comments/2xl23i/explain_pattern_matching_eli5_style/][ample of]] [[http://enthusiasm.cozy.org/archives/2013/07/optima][introduction to]] [[http://www.paulgraham.com/onlisptext.html][pattern]] [[https://github.com/tpapp/let-plus][matching]], but I'd like to give another try with a concrete example.
 
-Consider the following:
+Consider the following test data. =a1= is a list of length 3 and =a2= is a structure of type =foo=.
 
 #  that tries
 # to check if the variable =X= is a list beginning with =:a=, and if that
 # fails then check if the variable is an object of class =C= with slot =:a=
 
 #+BEGIN_SRC lisp
-(defvar x '(:a 2 10))
-
-(cond
-  ((and (typep x 'foo)
-        (eq :a (slot-value x 'baz)))
-   (let ((b (slot-value x 'bar)))
-     ...body1...))
-  ((and (and (listp x)
-             (= 3 (length x)))
-        (eq (first x) :a))
-   (let ((b (second x))) ;; b is bound to 10
-     ...body2...)))
+(defvar a1 '(:a 2 10))
+(defstruct foo
+  bar baz)
+(defvar a2 (make-foo :bar 2 :baz 5))
 #+END_SRC
 
-With pattern matching, you can write the same program shorter, as follows:
+Then we would like to write a function that returns the element of given data only if the given data and its associated elements fulfill certain conditions. 
 
 #+BEGIN_SRC lisp
-(match x
-  ((foo (bar b) (baz :a))
-   ...body1...)
-  ((list* :a b _)
-   ...body2...))
+(defun myfunc (x)
+  (cond
+    ;; when the input is of type foo
+    ((and (typep x 'foo)
+          (eq :a (slot-value x 'baz)))
+     (let ((b (slot-value x 'bar)))
+       ...body1...))
+
+    ;; when the input is a list
+    ((and (and (listp x)
+               (= 3 (length x)))
+          (eq (first x) :a))
+     (let ((b (second x))) ;; b is bound to 10
+       ...body2...))))
+#+END_SRC
+
+In short, with pattern matching, you can write the same program shorter, as follows:
+
+#+BEGIN_SRC lisp
+(defun myfunc (x)
+  (match x
+    ((foo (bar b) (baz :a))
+     ...body1...)
+    ((list* :a b _)
+     ...body2...)))
 #+END_SRC
 
 Let's break it down into details.
@@ -65,7 +77,7 @@ called =variable= patterns and creates a =let= binding in the macroexpanded code
 #+END_SRC
 
 The second subpattern specifies another slot =baz=. Here, the subpattern is
-=:a= which satisfies =constantp=. It is called a /constant pattern/ and the elements are compared with =eq,eql,equal,equalp= depending on the constant.
+=:a= which satisfies =constantp=. It is called a /constant pattern/ and the elements are compared with =eq,eql,equal,equalp= depending on the type of the constant.
 
 #+BEGIN_SRC diff
 (match x
@@ -76,13 +88,9 @@ The second subpattern specifies another slot =baz=. Here, the subpattern is
 
 If all of these query matches the input =x=, then =body1= is
 executed under the lexical environment where =b= is bound to the contents
-of the slot =bar= of =x=. This pair of a pattern and a body is called a clause.
+of the slot =bar= of =x=. The pair of a pattern and a body is called a /clause/.
 
-Now, remember that the value of =x= was a list =(:a 2 10)= . This is not of
-class =foo= and hence it does not satisfy the test.  In this case, there is
-no need to check the constant pattern =(baz :a)= --- =(eq (slot-value x 'baz) :a)=. Pattern matcher
-skips these unsatisfiable tests and start checking the second
-pattern clause immediately.
+Now, consider we call the function =myfunc= with =a1= as the argument. The argument =x= becomes the value of =a1=, which is a list =(:a 2 10)= . This is not of class =foo= and hence it does not satisfy the first pattern, hence the clause is not executed. Note that there is no need to check the constant pattern =(baz :a)= , in other words, =(eq (slot-value x 'baz) :a)=. This is because the value of =x= is proven NOT to be of type =foo=, hence there is no possibility that the =(slot-value x 'baz)= runs without error. Pattern matcher skips these unsatisfiable tests and start checking the second pattern clause immediately.
 
 #+BEGIN_SRC diff
 (match x
