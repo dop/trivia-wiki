@@ -1,11 +1,12 @@
-This page describes the set of patterns that is allowed to be used to implement the subsequent levels of  pattern matchers. Thus, it only matterns for the implementers of trivia itself.
+Level0 pattern matchers provide a very limited set of patterns.
+These are used for implementing level 1 / 2 patterns.
 
-Available Patterns are restricted to: list, list*, cons, constant, variable, wildcard (_).
+Available Patterns are restricted to: =list, list*, cons=, constant, variable, wildcard (_).
 
 Any symbols are considered as variables, except for constant symbols (namely,
- =t=, =nil= and keywords) and those named as =_= (checked by symbol name).
+ =t=, =nil= and keywords) and those named as =_= (checked by the symbol's name, they don't have to be exported).
  These are identical to the corresponding patterns in Optima.
 
-=ematch0= signals an error when the input did not match any
-patterns. =lambda-match0= and =lambda-ematch0= expands to =lambda= which
-takes an argument and pass it to =match0= and =ematch0=, respectively.
++ match0 : returns the body of the first matching pattern. Returns NIL when all patterns fail.
++ ematch0 : Same, but signals an error when all patterns fail.
++ =lambda-match0= and =lambda-ematch0= : expands to =lambda= which takes one argument and pass it to =match0= and =ematch0=, respectively.
