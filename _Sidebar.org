@@ -9,6 +9,6 @@
 + [[./Match-and-Variants][Match and Variants]]
 
 * Implementer's notice
-
++ [[Main-Page-for-Implementers][Main Page for Implementers]]
 + [[./Level-0-Patterns][Level 0 Patterns]]
 + [[./Level-1-Patterns][Level 1 Patterns]]
