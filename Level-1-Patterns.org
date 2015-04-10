@@ -1,4 +1,6 @@
-Level 1 matchers/patterns are the foundations of all level 2 patterns and optimizers. It provides only 2 patterns. Their roles are primitive and thus easy to compile. Thus the source code is simple and in only 1 file.
+Level 1 matchers/patterns are the foundations of all level 2 patterns and optimizers. It provides only 2 patterns. Their roles are primitive and thus its compiler can be dead simple & clean.
+
+All level 2 patterns are expanded into level 1 patterns with defpattern. Likewise, All level 2 matcher macros are expanded into level 1 matcher macros.
 
 * Guard1 Pattern
 
