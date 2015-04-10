@@ -69,7 +69,7 @@ the extended guard1 syntax is:
 - place :: if this key is non-nil, then the symbol is bound with
            symbol-macrolet and the accessor becomes setf-able.
 - ignorable :: If non-nil, =symbol= is declared to be =ignorable=. Default
-               value is =T= when =symbol= is a non-interned symbol, and
+               value is =T= when =symbol= is [[http://www.ai.mit.edu/projects/iiip/doc/CommonLISP/HyperSpec/Body/glo_a.html#apparently_uninterned][an apparently uninterned symbol]], and
                =NIL= otherwise.
 
 Note that =type= does not affect the optimization nor the test form. The declaration is added only to the conditional branch where the test form is evaluated to be true.
