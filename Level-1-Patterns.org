@@ -10,8 +10,8 @@ All level 2 patterns are expanded into level 1 patterns with defpattern. Likewis
 
 + Unlike original =guard= pattern, guard1 patterns do not allow subpatterns
   in =symbol=. 1 guard1 pattern corresponds to exactly 1 type checking.
-  Instead, =symbol= may contain additional lexical
-  information. For details see the next section.
+  Instead, =symbol= may contain [[#lexinfo][additional lexical
+  information]]. For details see the next section.
 + Level-1 patterns should be canonical. That is, there should be no
   forward-referenced symbols.
 
@@ -47,6 +47,7 @@ temp)=. It produces a code like below.
 #+END_SRC
 
 ** Extended Syntax of Guard1
+<<lexinfo>>
 
 As noted earlier, =guard1= may contain additional lexical declaration information within =symbol=. While the normal syntax of guard1 is as follows:
 
