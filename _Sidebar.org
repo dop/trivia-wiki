@@ -1,3 +1,5 @@
+* Documentation
+
 + [[./][Home]]
 + [[./What-is-pattern-matching%3F-Benefits%3F][What is pattern matching? Benefits?]]
 + [[./Various-Patterns][Various Patterns]]
@@ -5,3 +7,8 @@
   + [[./Logic-Based-Patterns][Logic Based Patterns]]
   + [[./Special-Patterns][Special Patterns]]
 + [[./Match-and-Variants][Match and Variants]]
+
+* Implementer's notice
+
++ [[./Level-0-Patterns][Level 0 Patterns]]
++ [[./Level-1-Patterns][Level 1 Patterns]]
