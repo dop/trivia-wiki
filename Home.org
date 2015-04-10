@@ -2,3 +2,6 @@ For a quickstart, go to the [[./Basic-Usage-1:-What-is-a-pattern-matching%3F-Ben
 
 People already familier with Optima might be interested in [[./Main-Page-for-Implementers][Main Page for Implementers]].
 
+For any questions discuss it in [[https://github.com/guicho271828/trivia/issues][Issues]].
+
+[[Ideas][Here is more ideas on patterns.]]
