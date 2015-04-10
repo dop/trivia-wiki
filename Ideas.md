@@ -1,4 +1,4 @@
-# Inline/Splice pattern 
+## Inline/Splice pattern 
 
 (cf. https://github.com/m2ym/optima/issues/103)
 
@@ -19,4 +19,6 @@ consider the case below, assuming we have a pattern called `inline`.
 This will save a lot of code when parsing a long list.
 also beneficial when implementing array-pattern.
 
-Please consider gracefully. if approved, I will write one.
+## array patterns
+
+a must-have, I guess. It would be great if the pattern can implement LU decomposition beautifully.
