@@ -78,19 +78,19 @@ Note that =type= does not affect the optimization nor the test form. The declara
 
 : (or1 subpattens*)
 
-Or1 has an important role called /consistency check/, of checking if the set of variables is consistent under each branch of subpattern. If two sets of variables under the subpatterns are not the same, missing variables are assigned NIL.
+Or1 has an important role called /consistency check/, of checking if the set of variables in each branch is set-equal to each other. If two subpatterns have the different sets of variables, missing variables are assigned NIL.
 
 #+BEGIN_SRC lisp
 (defun test (x)
    (match x
      ;; using level2 cons/vector pattern for convenience
-     ((or1 (cons a b)
+     ((or1 (cons   a b)
            (vector a c)) (values a b c))))
 
 (test '(1 . 2)) ;; --> 1, 2, nil
 (test #(1 2)) ;; --> 1, nil, 2
 #+END_SRC
 
-This behavior can be changed by setting =*or-pattern-allow-unshared-variables*= to =NIL=. When two subpatterns do not share the same set of patterns, it can signal an assertion error of type =or1-pattern-inconsistency=, with =(repair-pattern subpattern)= restart. You may fix and replace the subpattern by calling this handler with a new pattern.
+This behavior can be changed by setting =*or-pattern-allow-unshared-variables*= to =NIL=, in which case variable inconsitency will signal an assertion error of type =or1-pattern-inconsistency=, with =(repair-pattern subpattern)= restart. You may fix and replace the subpattern by calling this handler with a new pattern.
 
-When a symbol is declared to be ignorable by =guard1=, it is not accounted for pattern consistency check.
+When a symbol is declared to be ignorable by =guard1=, it is not accounted for consistency check.
