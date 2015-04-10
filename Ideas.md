@@ -1,4 +1,6 @@
-# Inline/Splice pattern (cf. https://github.com/m2ym/optima/issues/103)
+# Inline/Splice pattern 
+
+(cf. https://github.com/m2ym/optima/issues/103)
 
 Inline pattens are useful in general, not only for lists.
 consider the case below, assuming we have a pattern called `inline`.
