@@ -1,3 +1,5 @@
+Level 1 matchers/patterns are the foundations of all level 2 patterns and optimizers. It provides only 2 patterns. Their roles are primitive and thus easy to compile. Thus the source code is simple and in only 1 file.
+
 * Guard1 Pattern
 
 #+BEGIN_SRC lisp
