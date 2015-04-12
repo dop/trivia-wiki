@@ -9,5 +9,5 @@ Any symbols are considered as variables, except for constant symbols (namely,
  These are identical to the corresponding patterns in Optima.
 
 + match0 :: returns the body of the first matching pattern. Returns NIL when all patterns fail.
-+ ematch0 :: Same, but signals an error when all patterns fail.
++ ematch0 :: Same, but signals an error when all patterns fail. This is preferred over =match0= since the compiler should be correct.
 + lambda-match0 and lambda-ematch0 :: expands to =lambda= which takes one argument and pass it to =match0= and =ematch0=, respectively.
