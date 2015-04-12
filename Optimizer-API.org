@@ -25,9 +25,10 @@ macro *defoptimizer* /name args/ &body /body/
 *** Description:
 
 /function/ should be of =(ftype (function (list &key &allow-other-keys)
- list))=. The required argument is a list of [[Match-and-Variants#macro-matchematchcmatch-1][multi-match clauses]]. The function should return a list of modified clauses.
+ list))=. The required argument is a list of [[Match-and-Variants#macro-matchematchcmatch-1][multiclauses]]. The function should return a list of modified clauses.
 
-The keyword arguments contains additional information in the context. Currently, Trivia adds =:types= information, which is a list of types that the matching arguments are already known to be of in the current context. For example, if the pattern-match compiler is invoked by =match+=, it contains the type information provided by the user.
+The keyword arguments contains additional information in the context. Currently, Trivia adds =:types= information, which is a list of types that the matching arguments are already known to be of in the current context.
+# For example, if the pattern-match compiler is invoked by =match+=, it contains the type information provided by the user.
 
 =defoptimizer= is a convenience macro that registers the given function definition as
 the optimizer.
