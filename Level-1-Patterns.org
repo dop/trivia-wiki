@@ -8,6 +8,8 @@ All level 2 patterns are expanded into level 1 patterns with defpattern. Likewis
 (guard1 symbol test-form {generator-form subpattern}*)
 #+END_SRC
 
++ It binds the current matching value to =symbol= with =let= and conduct checking on it with =test-form=. It the test fails, it goes to the next pattern.
++ if the test succeeds, each =generator-form= is evaluated and its value is matched against the corresponding =subpattern=.
 + Unlike original =guard= pattern, guard1 patterns do not allow subpatterns
   in =symbol=. 1 guard1 pattern corresponds to exactly 1 type checking.
   Instead, =symbol= may contain [[#extended-syntax-of-guard1][additional lexical
