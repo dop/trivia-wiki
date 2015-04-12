@@ -3,15 +3,16 @@
 
 * Documentation
 
-+ [[./What-is-pattern-matching%3F-Benefits%3F][What is pattern matching? Benefits?]]
-+ [[./Various-Patterns][Various Patterns]]
-  + [[./Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]]
-  + [[./Logic-Based-Patterns][Logic Based Patterns]]
-  + [[./Special-Patterns][Special Patterns]]
-+ [[./Match-and-Variants][Match and Variants]]
++ [[What-is-pattern-matching%3F-Benefits%3F][What is pattern matching? Benefits?]]
++ [[Various-Patterns][Various Patterns]]
+  + [[Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]]
+  + [[Logic-Based-Patterns][Logic Based Patterns]]
+  + [[Special-Patterns][Special Patterns]]
++ [[Match-and-Variants][Match and Variants]]
 
 * Implementer's notice
 + [[Main-Page-for-Implementers][Main Page for Implementers]]
-+ [[./Level-0-Patterns][Level 0 Patterns]]
-+ [[./Level-1-Patterns][Level 1 Patterns]]
++ [[Level-0-Patterns][Level 0 Patterns]]
++ [[Level-1-Patterns][Level 1 Patterns]]
 + [[Optimizer-API]]
++ [[Ideas]]
