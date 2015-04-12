@@ -8,6 +8,6 @@ Any symbols are considered as variables, except for constant symbols (namely,
  =t=, =nil= and keywords) and those named as =_= (checked by the symbol's name, they don't have to be exported).
  These are identical to the corresponding patterns in Optima.
 
-+ match0 : returns the body of the first matching pattern. Returns NIL when all patterns fail.
-+ ematch0 : Same, but signals an error when all patterns fail.
-+ =lambda-match0= and =lambda-ematch0= : expands to =lambda= which takes one argument and pass it to =match0= and =ematch0=, respectively.
++ match0 :: returns the body of the first matching pattern. Returns NIL when all patterns fail.
++ ematch0 :: Same, but signals an error when all patterns fail.
++ lambda-match0 and lambda-ematch0 :: expands to =lambda= which takes one argument and pass it to =match0= and =ematch0=, respectively.
