@@ -3,6 +3,6 @@ As the baseline, [[https://github.com/guicho271828/trivia/wiki/Basic-Usage-3:-Ma
 In the following sections, I briefly summarize what kind of patterns are available in these matcher macros.
 
 
-+ [[./Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]]
++ [[./Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]] (new in Trivia: soft-match variants and specialized variants of the vector pattern)
 + [[./Logic-Based-Patterns][Logic Based Patterns]]
-+ [[./Special-Patterns][Special Patterns]]
++ [[./Special-Patterns][Special Patterns]] (=bind= pattern and =access= pattern)
