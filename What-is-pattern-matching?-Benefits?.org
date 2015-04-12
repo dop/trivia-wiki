@@ -121,4 +121,4 @@ Patterns can be nested. For example, the following code returns =4=. This proper
    c))
 #+END_SRC
 
-Go to the [[./Basic-Usage-2:-Patterns][next page]] for a full catalogue of other patterns.
+Go to the [[Various-Patterns][next page]] for a full catalogue of other patterns.
