@@ -1,3 +1,5 @@
+It takes almost 1.5 min to read through this page.
+
 * Introduction
 
 Pattern matching is a powerful syntactic construct widely accepted in the
