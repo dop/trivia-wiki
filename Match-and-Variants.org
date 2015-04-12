@@ -14,7 +14,7 @@
 
 Matches /argument/ against the patterns provided in /clauses/. Evaluate the /bodyform/ of the first clause whose pattern matches against /argument/. /bodyform/ is treated as an implicit progn.
 
-If no clauses have matched the given argument, /match/ returns /nil/. In contrast, /ematch/ signals an error /match-error/, and /cmatch/ signals a correctable /match-error/.
+If no clauses have matched the given argument, /match/ returns /nil/. In contrast, /ematch/ signals an error match-error/, and /cmatch/ signals a correctable /match-error/.
 
 ** Macro /match*,ematch*,cmatch*/
 
@@ -45,3 +45,36 @@ If no clauses have matched the given argument, /match/ returns /nil/. In contras
 + bodyform :: an implicit progn.
 
 /values-form/ is evaluated, and the each value of returned values are matched against the patterns provided in /multiclauses/. Other rules are similar to /match*,ematch*/ and /cmatch*/.
+
+** Macro /lambda-[eo]?match[*]?/ | /defun-[eo]?match[*]?/
+
++ Syntax ::
+   *lambda-match* &body /{clauses}*/ ---> /result/
+   
+   *lambda-ematch*  &body /{clause}*/ ---> /result/
+   
+   *lambda-cmatch*  &body /{clause}*/ ---> /result/
+
+   *lambda-match**  &body /{multiclause}*/ ---> /result/
+   
+   *lambda-ematch** &body /{multiclause}*/ ---> /result/
+   
+   *lambda-cmatch** &body /{multiclause}*/ ---> /result/
+
+   *defun-match* name (arg) &body /{clause}*/ ---> /result/
+
+   *defun-ematch* name (arg) &body /{clause}*/ ---> /result/
+   
+   *defun-cmatch* name (arg) &body /{clause}*/ ---> /result/
+
+   *defun-match** name args &body /{multiclause}*/ ---> /result/
+   
+   *defun-ematch** name args &body /{multiclause}*/ ---> /result/
+   
+   *defun-cmatch** name args &body /{multiclause}*/ ---> /result/
++ clause :: -- (/pattern/ &body /{bodyform}*/ )
++ multiclause :: -- ((&rest /patterns/) &body /{bodyform}*/ )
++ pattern :: a pattern form.
++ bodyform :: an implicit progn.
+
+These are the shortcuts for writing a function that performs a pattern matching immediately.
