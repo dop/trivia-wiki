@@ -1,5 +1,6 @@
 Level0 pattern matchers provide a very limited set of patterns.
 These are used for implementing level 1 / 2 patterns.
+As this is a part of a compiler, the implementation of level 0 matcher is aimed at cleanness and not speed.
 
 Available Patterns are restricted to: =list, list*, cons=, constant, variable, wildcard (_).
 
