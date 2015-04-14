@@ -33,7 +33,7 @@ Currently trivia.ppcre is implemented in a way that cannot be merged by the opti
   ((ppcre "aa(d*)" ds))
 ```
 
-The tests about the first two =a='s are redundant, and should ideally be automatically merged and checked only once.
+The tests about the first two `a`'s are redundant, and should ideally be automatically merged and checked only once.
 
 ```lisp
 (match str
