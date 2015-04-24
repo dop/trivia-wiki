@@ -12,10 +12,9 @@
 #+END_SRC
 
 Trivia has Optima's FAIL macro with the same functionality, but this symbol is loaded optionally.
-This is because the symbol FAIL is so common in many other libraries, notably in fiveam and other testing libraries.
-Thus, to use FAIL macro, you should additionally import =trivia.fail= package.
+This is because the symbol FAIL is so common in many other libraries, notably in fiveam and other testing libraries. Therefore, we export FAIL in a separate package =trivia.fail=, and you should =:use= it manually.
 
-We also provide the other set of aliases. You can use NEXT with =trivia.next= package, and SKIP by =trivia.skip=.
+We also provide other aliases. You can use NEXT with =trivia.next= package, and SKIP by =trivia.skip=.
 NEXT also conflicts with symbol =iterate:next=.
 Fortunately, to our knowledge, there is no famous library exporting SKIP.
 
