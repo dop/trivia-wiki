@@ -8,8 +8,8 @@
   + [[Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]]
   + [[Logic-Based-Patterns][Logic Based Patterns]]
   + [[Special-Patterns][Special Patterns]]
-+ [[NEXT-FAIL-SKIP-macro][NEXT FAIL SKIP macro]]
 + [[Match-and-Variants][Match and Variants]]
++ [[NEXT-FAIL-SKIP-macro][NEXT FAIL SKIP macro]]
 + [[Using-Alternative-Optimizer]]
 * Implementer's notice
 + [[Main-Page-for-Implementers][Main Page for Implementers]]
