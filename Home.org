@@ -5,3 +5,5 @@ People already familier with Optima might be interested in [[./Main-Page-for-Imp
 For any questions discuss it in [[https://github.com/guicho271828/trivia/issues][Issues]].
 
 [[Ideas][Here is more ideas on patterns.]]
+
+Comments about this wiki/doc is welcome.
