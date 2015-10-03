@@ -17,5 +17,5 @@ To switch the optimizer, like the one provided in https://github.com/guicho27182
     ((vector :a y :b) 'vector-second))))
 #+end_src
 
-The easiest way to use this balland2006 optimizer is to cakk
+The easiest way to use this balland2006 optimizer is to call
 =(ql:quickload :trivia.balland2006.enabled)=. It will automatically run =(in-optimizer :balland2006)=.
