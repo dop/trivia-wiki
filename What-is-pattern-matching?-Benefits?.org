@@ -84,15 +84,35 @@ The second subpattern specifies another slot =baz=. Here, the subpattern is
 #+BEGIN_SRC diff
 (match x
 -  ((foo (bar b)
-+  ((foo (bar b) (baz :a))
-+   ...body1...)
++  ((foo (bar b) (baz :a)) ;; <-- pattern <--+
++   ...body1...)           ;; <-- body    <--+-- clause
 #+END_SRC
 
 If all of these query matches the input =x=, then =body1= is
 executed under the lexical environment where =b= is bound to the contents
 of the slot =bar= of =x=. The pair of a pattern and a body is called a /clause/.
 
-Now, consider we call the function =myfunc= with =a1= as the argument. The argument =x= becomes the value of =a1=, which is a list =(:a 2 10)= . This is not of class =foo= and it does not satisfy the first pattern, hence =body1= is not executed. Note that there is no need to check the constant pattern =(baz :a)= , in other words, =(eq (slot-value x 'baz) :a)=. This is because the value of =x= is proven NOT to be of type =foo=, hence there is no possibility that the =(slot-value x 'baz)= runs without error. Pattern matcher skips these unsatisfiable tests and start checking the second pattern clause immediately.
+--------
+short break
+--------
+
+Now, consider we call the function =myfunc= with =a1= as the argument. Below is same as the example above. I just copied it here for the reader's convenience.
+
+#+BEGIN_SRC lisp
+(defvar a1 '(:a 2 10))
+(defstruct foo
+  bar baz)
+(defvar a2 (make-foo :bar 2 :baz 5))
+
+(defun myfunc (x)
+  (match x
+    ((foo (bar b) (baz :a))
+     ...body1...)
+    ((list* :a b _)
+     ...body2...)))
+#+END_SRC
+
+The argument =x= becomes the value of =a1=, which is a list =(:a 2 10)= . This is not of class =foo= and it does not satisfy the first pattern, hence =body1= is not executed. Note that there is no need to check the constant pattern =(baz :a)= , in other words, =(eq (slot-value x 'baz) :a)=. This is because the value of =x= is proven NOT to be of type =foo=, hence there is no possibility that the =(slot-value x 'baz)= runs without error. Pattern matcher skips these unsatisfiable tests and start checking the second pattern clause immediately.
 
 #+BEGIN_SRC diff
 (match x
