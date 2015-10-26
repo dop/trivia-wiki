@@ -29,7 +29,9 @@ If no clauses have matched the given argument, /match/ returns /nil/. In contras
 + patterns :: a list of pattern languages.
 + bodyform :: an implicit progn.
 
-/arguments/ are evaluated in left-to-right manner, and the /patterns/ are matched against the results of evaluation of /arguments/ in left-to-right manner. When the number of /patterns/ in a clause is insufficient, it is padded with wildcard patterns, i.e., no check is conducted. Excessive number of patterns will signal a compile-time error. Evaluate the /bodyform/ of the first clause when all patterns match successfully. Other rules are similar to /match,ematch/ and /cmatch/.
+/arguments/ are evaluated in left-to-right manner, and the /patterns/ are matched against the results of evaluation of /arguments/ in left-to-right manner.  Evaluate the /bodyform/ of the first clause whose patterns match successfully.
+
+ When the number of /patterns/ in a clause is insufficient, it is padded with wildcard patterns, i.e., no check is conducted. In contrast, excessive number of patterns will signal a compile-time error.
 
 ** Macro /multiple-value-match, multiple-value-ematch, multiple-value-cmatch/
 
@@ -44,9 +46,10 @@ If no clauses have matched the given argument, /match/ returns /nil/. In contras
 + patterns :: a list of pattern languages.
 + bodyform :: an implicit progn.
 
-/values-form/ is evaluated, and the each value of returned values are matched against the patterns provided in /multiclauses/. Other rules are similar to /match*,ematch*/ and /cmatch*/.
+Similar to /match*,ematch*/ and /cmatch*/, but this is for multiple-value.
+/values-form/ is evaluated, and the each value of returned values are matched against the patterns provided in /multiclauses/.
 
-** Macro /lambda-[eo]?match[*]?/ | /defun-[eo]?match[*]?/
+** Macro /lambda-[ec]?match[*]?/ | /defun-[ec]?match[*]?/
 
 + Syntax ::
    *lambda-match* &body /{clauses}*/ ---> /result/
