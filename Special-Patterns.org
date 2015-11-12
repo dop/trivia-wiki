@@ -39,6 +39,16 @@ and a form =(string *)=. It has a subpattern =length=, which should be bound to 
 (defpattern string-type-specifier (length)
    `(or (list 'string ,length)
         (and 'string (<> ,length '*))))
+
+(match 'string
+  ((string-type-specifier length)
+   length))
+; '*
+
+(match '(string 3)
+  ((string-type-specifier length)
+   length))
+; 3
 #+end_src
 
 ** Access Pattern
