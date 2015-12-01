@@ -114,7 +114,7 @@ the /predicate/ returns true for the object. =lambda= form is acceptable.
 
 + Syntax :: assoc /item/ /subpattern/ &key /key/ /test/
             
-            property /key/ /subpattern/ &optional /default/
+            property /key/ /subpattern/ &optional /(default nil supplied-p)/
 
 All these patterns first checks if the pattern is a list.  If that is
 satisfied, it then obtain the contents with =(cdr (assoc item X key test))=
