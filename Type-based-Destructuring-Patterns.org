@@ -114,12 +114,14 @@ the /predicate/ returns true for the object. =lambda= form is acceptable.
 
 + Syntax :: assoc /item/ /subpattern/ &key /key/ /test/
             
-            property /key/ /subpattern/ &optional /(default nil supplied-p)/
+            property /key/ /subpattern/ &optional /default foundp/
 
 All these patterns first checks if the pattern is a list.  If that is
 satisfied, it then obtain the contents with =(cdr (assoc item X key test))=
 (assoc pattern) or =(getf key X)= (property pattern) where X is bound the container. The value
 obtained by these accessors is then matched against /subpattern/.
+
+Property pattern matches the default value to the pattern if supplied and the value was not found, and also binds t/nil to foundp.
 
 Two patterns are derived from these patterns.
 
