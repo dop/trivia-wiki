@@ -1,0 +1,9 @@
+
+* (= number), (/= number) patterns
+
+These will check if the matched values are of type `number`, and if they follow the specific numeric constraints.
+
+* <, >, <=, >= patterns
+
+These will check if the matched values are of type `real`, and if they follow the specific numeric constraints.
+The arguments do not match when they are `complex`, since they cannot be compared by greater/less.
