@@ -8,6 +8,20 @@ Any symbols are considered as variables, except for constant symbols (namely,
  =t=, =nil= and keywords) and those named as =_= (checked by the symbol's name, they don't have to be exported).
  These are identical to the corresponding patterns in Optima.
 
+Example:
+
+```cl
+  (match0 tree
+    ((list* x (list :hi! y _) _ z)
+     (vector x y z)))
+```
+
+This example code checks if tree is a cons tree of length more than 3,
+and if the second element is a list of length 3,
+and if its first element is a constant `:hi!'.
+If they hold true, bind x, y and z and evaluate (vector x y z).
+
+
 + match0 :: returns the body of the first matching pattern. Returns NIL when all patterns fail.
 + ematch0 :: Same, but signals an error when all patterns fail. This is preferred over =match0= since the compiler should be correct.
 + lambda-match0 and lambda-ematch0 :: expands to =lambda= which takes one argument and pass it to =match0= and =ematch0=, respectively.
