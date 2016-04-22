@@ -88,9 +88,9 @@ Using these variants properly will results in faster code.
   + make-instance style plist :: /keyword subpattern/
   + with-slots style :: /(slot-name subpattern)/
   + with-accessors style :: /(accessor-name subpattern)/ . =accessor-name= is a symbol, where the corresponding accessor function should be fbound to one of the following symbols:
-    + Symbol /accessor-name/ itself.
-    + Symbol /<class-name>-<accessor-name>/ in the same package.
-    + Symbol /<class-name><accessor-name>/ in the same package.
+    + Symbol /accessor-name/ itself. (common style for a class)
+    + Symbol /<class-name>-<accessor-name>/ in the same package. (common style for a structure accessor function)
+    + Symbol /<class-name><accessor-name>/ in the same package. (compatibility to Optima)
   + /slot-name/ : the value returned by =(slot-value <obj> '<slot-name>)= is bound to the variable of the same name.
   + /accessor-name/ : the value returned by the accessor is bound to the variable of the same name.
 
