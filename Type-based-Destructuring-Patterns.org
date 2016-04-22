@@ -77,14 +77,17 @@ Using these variants properly will results in faster code.
 
 =structure= pattern is just a synonym to the =class= pattern.
 
-+ Syntax :: class /class-name/ &rest /slot-description*/
++ Syntax :: class /classname/ &rest /slot-description*/
      
-            structure /structure-name/ &rest /slot-description*/
-
-+ /slot-description/ :: either of the following:
-  + make-instance style plist : /keyword subpattern/
-  + with-slots style : /(slot-name subpattern)/
-  + with-accessors style : /(accessor-name subpattern)/ . Where =accessor-name= is one of:
+            structure /classname/ &rest /slot-description*/
++ /classname/ :: One of the following:
+  + A symbol naming a class (including standard-class, structure-class and built-in-class)
+  + A symbol, where a symbol /classname/-p in the same package is fbound. It should be a unary function (or the consequence is undefined)
+  + A symbol, where a symbol /classname/p in the same package is fbound. It should be a unary function (or the consequence is undefined)
++ /slot-description/ :: one of the following:
+  + make-instance style plist :: /keyword subpattern/
+  + with-slots style :: /(slot-name subpattern)/
+  + with-accessors style :: /(accessor-name subpattern)/ . Where =accessor-name= is one of:
     + An arbitrary fbound symbol.
     + A symbol of name /class-name/-/accessor-name/
     + A symbol of name /class-name//accessor-name/
