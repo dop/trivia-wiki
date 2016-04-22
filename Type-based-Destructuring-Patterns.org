@@ -82,14 +82,14 @@ Using these variants properly will results in faster code.
             structure /class-name/ &rest /slot-description*/
 + /class-name/ :: A symbol which satisfies one of the following:
   + =(find-class <class-name>)= returns a class.
-  + A symbol /<class-name>-p/ in the same package is fbound. It should be a unary function (or the consequence is undefined)
-  + A symbol /<class-name>p/ in the same package is fbound. It should be a unary function (or the consequence is undefined)
+  + Symbol /<class-name>-p/ in the same package is fbound. It should be a unary function, or the consequence is undefined.
+  + Symbol /<class-name>p/ in the same package is fbound. It should be a unary function, or the consequence is undefined.
 + /slot-description/ :: one of the following:
   + make-instance style plist :: /keyword subpattern/
   + with-slots style :: /(slot-name subpattern)/
   + with-accessors style :: /(accessor-name subpattern)/ . =accessor-name= is a symbol, where the corresponding accessor function should be fbound to one of the following symbols:
-    + Symbol /accessor-name/ itself. (common style for a class)
-    + Symbol /<class-name>-<accessor-name>/ in the same package. (common style for a structure accessor function)
+    + Symbol /accessor-name/ itself. (common style for generic functions)
+    + Symbol /<class-name>-<accessor-name>/ in the same package. (common style for structure accessor functions)
     + Symbol /<class-name><accessor-name>/ in the same package. (compatibility to Optima)
   + /slot-name/ : the value returned by =(slot-value <obj> '<slot-name>)= is bound to the variable of the same name.
   + /accessor-name/ : the value returned by the accessor is bound to the variable of the same name.
