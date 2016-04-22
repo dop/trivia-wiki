@@ -81,7 +81,7 @@ Using these variants properly will results in faster code.
      
             structure /classname/ &rest /slot-description*/
 + /classname/ :: One of the following:
-  + A symbol naming a class (including standard-class, structure-class and built-in-class)
+  + A symbol naming a class (including =standard-class=, =structure-class= and =built-in-class=. =find-class= should return a class)
   + A symbol, where a symbol /classname/-p in the same package is fbound. It should be a unary function (or the consequence is undefined)
   + A symbol, where a symbol /classname/p in the same package is fbound. It should be a unary function (or the consequence is undefined)
 + /slot-description/ :: one of the following:
