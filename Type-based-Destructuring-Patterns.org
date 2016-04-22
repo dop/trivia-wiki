@@ -87,10 +87,10 @@ Using these variants properly will results in faster code.
 + /slot-description/ :: one of the following:
   + make-instance style plist :: /keyword subpattern/
   + with-slots style :: /(slot-name subpattern)/
-  + with-accessors style :: /(accessor-name subpattern)/ . Where =accessor-name= is one of:
-    + An arbitrary fbound symbol.
-    + A symbol of name /<class-name>-<accessor-name>/
-    + A symbol of name /<class-name><accessor-name>/
+  + with-accessors style :: /(accessor-name subpattern)/ . =accessor-name= is a symbol, where the corresponding accessor function should be fbound to one of the following symbols:
+    + Symbol /accessor-name/ itself.
+    + Symbol /<class-name>-<accessor-name>/ in the same package.
+    + Symbol /<class-name><accessor-name>/ in the same package.
   + /slot-name/ : the value returned by =(slot-value <obj> '<slot-name>)= is bound to the variable of the same name.
   + /accessor-name/ : the value returned by the accessor is bound to the variable of the same name.
 
