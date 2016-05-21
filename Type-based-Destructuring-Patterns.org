@@ -91,8 +91,8 @@ Using these variants properly will results in faster code.
     + Symbol /accessor-name/ itself. (common style for generic functions)
     + Symbol /<class-name>-<accessor-name>/ in the same package. (common style for structure accessor functions)
     + Symbol /<class-name><accessor-name>/ in the same package. (compatibility to Optima)
-  + /slot-name/ : the value returned by =(slot-value <obj> '<slot-name>)= is bound to the variable of the same name.
-  + /accessor-name/ : the value returned by the accessor is bound to the variable of the same name.
+  + slot-name :: the value returned by =(slot-value <obj> '<slot-name>)= is bound to the variable of the same name.
+  + accessor-name :: the value returned by the accessor is bound to the variable of the same name.
 
 
 We just post an example for each of three style here.
