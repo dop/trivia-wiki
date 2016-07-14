@@ -78,7 +78,7 @@ specifies the pattern for a slot =bar=. It binds the =slot-value= of the slot to
 Any non-self-evaluating symbols such as =b= are
 called =variable= patterns. They create =let= bindings in the macroexpanded code.
 
-The second subpattern specifies another slot =baz=. Here, the subpattern is
+Next, the second subpattern of =foo= specifies another slot =baz=. Here, the subpattern is
 =:a= which satisfies =constantp=. It is called a /constant pattern/ and the elements are compared with =eq,eql,equal,equalp= depending on the type of the constant.
 
 #+BEGIN_SRC diff
