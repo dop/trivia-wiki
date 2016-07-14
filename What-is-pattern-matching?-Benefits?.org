@@ -69,14 +69,14 @@ The first subform of that =class= pattern, or a /subpattern/, is =(bar b)= and i
 specifies the pattern for a slot =bar=. It binds the =slot-value= of the slot to a variable =b= with
 =let=, just like =with-slots=.
 
-Also, any non-self-evaluating symbols such as =b= are
-called =variable= patterns. They create =let= bindings in the macroexpanded code.
-
 #+BEGIN_SRC diff
 (match x
 -  ((foo
 +  ((foo (bar b)
 #+END_SRC
+
+Any non-self-evaluating symbols such as =b= are
+called =variable= patterns. They create =let= bindings in the macroexpanded code.
 
 The second subpattern specifies another slot =baz=. Here, the subpattern is
 =:a= which satisfies =constantp=. It is called a /constant pattern/ and the elements are compared with =eq,eql,equal,equalp= depending on the type of the constant.
