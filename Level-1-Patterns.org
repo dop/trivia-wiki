@@ -74,7 +74,7 @@ the extended guard1 syntax is:
                value is =T= when =symbol= is [[http://www.ai.mit.edu/projects/iiip/doc/CommonLISP/HyperSpec/Body/glo_a.html#apparently_uninterned][an apparently uninterned symbol]], and
                =NIL= otherwise.
 
-Note that =type= does not affect the optimization nor the test form. The declaration is added only to the conditional branch where the test form is evaluated to be true.
+Note that =type= does not affect the pattern optimizer nor the test form. The declaration is added only to the conditional branch where the test form is evaluated to be true.
 
 * Or1 Pattern
 
