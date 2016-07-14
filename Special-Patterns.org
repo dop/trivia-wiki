@@ -8,7 +8,7 @@ This section contains patterns that has specific roles in itself.
 Just the same as using /variable/ as a variable pattern, except 
 the variable is accessed by =symbol-macrolet= instead of =let=. This allows the use of =setf= to modify the matched object, and also delay the evaluation of the accessor.
 
-If /eager/ variable is also provided, then it is bound by =let=. (Useful when the duplicated computation can be a bottleneck)
+If /eager/ variable is provided, then it is bound by =let=. (Useful when the duplicated calls to the accessor can be a bottleneck.)
 
 *Example*:
 
