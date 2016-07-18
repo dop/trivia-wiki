@@ -1,4 +1,4 @@
-Trivia recently introduced a special kind of patterns called *Inline Patterns*, which are the patterns whose expansion results are inlined/spliced, just like in ,@ in Common Lisp macros.
+Trivia recently introduced a special kind of patterns called *Inline Patterns*, which are the patterns whose expansion results are inlined/spliced, just like ,@ in Common Lisp macros.
 
 These patterns are expanded in *Applicative Order*, i.e., innermost-first, as opposed to regular patterns which are expanded in the *Normal Order*. Also, Inline Patterns are expanded before the regular patterns. These changes are necessary by design, and they should be defined by a special macro =defpattern-inline=.
 
