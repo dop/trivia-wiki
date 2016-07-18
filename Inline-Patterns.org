@@ -24,7 +24,7 @@ Imagine you have a long list and you want to specify the, say, *100th* element i
    x))
 #+end_src
 
-=@@= pattern help you write such a pattern conveniently:
+=@@= pattern helps you write such a pattern conveniently:
 
 #+begin_src lisp
 (match long-long-list
