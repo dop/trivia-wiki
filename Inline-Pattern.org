@@ -1,0 +1,73 @@
+Trivia recently introduced a special kind of patterns called *Inline Patterns*, which are the patterns whose expansion results are inlined/spliced, just like in =,@= in Common Lisp macros.
+
+These patterns are expanded in *Applicative Order*, i.e., innermost-first, as opposed to regular patterns which are expanded in the *Normal Order*. Also, Inline Patterns are expanded before the regular patterns. These changes are necessary by design, and they should be defined by a special macro =defpattern-inline=.
+
+** =@= pattern
+
++ Syntax :: @ &rest /patterns/
+
+This just splices the body into the current position.
+
+** =@@= pattern
+
++ Syntax :: @@ /n/ &rest /patterns/
+
+This splices /n/ copies of /patterns/ .
+
+** Usage
+
+Imagine you have a long list and you want to specify the, say, *100th* element in the list. You don't want to write 100 of =_= patterns by yourself, right?
+
+#+begin_src lisp
+(match long-long-list
+  ((list _ _ _ _ _ .......... _ _ _ x)
+   x))
+#+end_src
+
+=@@= pattern help you write such a pattern conveniently:
+
+#+begin_src lisp
+(match long-long-list
+  ((list (@@ 100 _) x)
+   x))
+#+end_src
+
+This is especially helpful in writing an array pattern.
+
+#+begin_src lisp
+(match my-array
+  ((array :dimensions '(101 101)
+          :contents ((@@ 50 (@@ 101 _))
+                     ((@@ 50 _) center (@@ 50 _))
+                     (@@ 50 (@@ 101 _))))
+   center))
+
+;; or like this
+
+(match my-array
+  ((array :dimensions '(101 101)
+          :contents ((@@ 50
+                      ((@@ 50 _)     _    (@@ 50 _))
+                     ((@@ 50 _)   center  (@@ 50 _))
+                     (@@ 50
+                      ((@@ 50 _)     _    (@@ 50 _))))
+   center))
+#+end_src
+
+You can conveniently assign a series of variables to array elements here:
+
+#+begin_src lisp
+(defpattern-inline row (n symbol)
+  (mapcar (lambda (m)
+            (symbolicate symbol m))
+          (iota n)))
+
+(match my-array
+  ((array :dimensions '(101 101)
+          :contents ((@@ 50
+                      ((@@ 50 _)     _    (@@ 50 _))
+                     ((row 101 a_))
+                     (@@ 50
+                      ((@@ 50 _)     _    (@@ 50 _))))
+   (+ a_0 a_20 a_40 a_60 a_80 a_100)))
+#+end_src
