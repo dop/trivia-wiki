@@ -31,7 +31,7 @@ See also: [Assoc, Property, Alist, Plist Pattern](https://github.com/guicho27182
 This is only briefly introduced in [the REAMDE](https://github.com/m2ym/optima#macro-match) of Optima.
 They come from [fare-matcher](http://www.cliki.net/fare-matcher). Since it introduces additional complexity (infix operators!) we are currently not supporting them.
 
-## `fail` Pattern Moved to `trivia.fail` Package
+## Macro `fail` Moved to Package `trivia.fail`
 
 See [here](https://github.com/guicho271828/trivia/wiki/NEXT-FAIL-SKIP-macro).
 
