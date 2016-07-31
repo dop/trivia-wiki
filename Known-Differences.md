@@ -15,6 +15,15 @@ The first argument to assoc and property patterns are evaluated in trivia, while
   ((assoc 'foo val) (print val))) ;; does not match: 'FOO versus '(QUOTE FOO) == ''foo
 ```
 
+Assoc pattern also do **not** match against improper association list while they do on Optima.
+
+```cl
+(trivia:match '(2 (:foo . 1))
+  ((assoc :foo val) (print val))) ;; -> NIL, do not match
+(optima:match '(2 (:foo . 1))
+  ((assoc :foo val) (print val)))  ;; -> ignores 2 and matches against (:foo . 1)
+```
+
 See also: [Assoc, Property, Alist, Plist Pattern](https://github.com/guicho271828/trivia/wiki/Type-Based-Destructuring-Patterns#assoc-property-alist-plist-pattern)
 
 ## Infix when/unless Notation
