@@ -1,6 +1,6 @@
 In this page, we describe the known differences between Trivia and Optima.
 
-# assoc and property patterns
+## Assoc and Property Patterns
 
 The first argument to assoc and property patterns are evaluated in trivia, while quoted in optima.
 
@@ -17,17 +17,17 @@ The first argument to assoc and property patterns are evaluated in trivia, while
 
 See also: [Assoc, Property, Alist, Plist Pattern](https://github.com/guicho271828/trivia/wiki/Type-Based-Destructuring-Patterns#assoc-property-alist-plist-pattern)
 
-# infix `when`/`unless` notation
+## Infix when/unless Notation
 
 This is only briefly introduced in [the REAMDE](https://github.com/m2ym/optima#macro-match) of Optima.
 They come from [fare-matcher](http://www.cliki.net/fare-matcher). Since it introduces additional complexity (infix operators!) we are currently not supporting them.
 
-# `fail` pattern is moved to `trivia.fail` package
+## `fail` Pattern Moved to `trivia.fail` Package
 
 See [here](https://github.com/guicho271828/trivia/wiki/NEXT-FAIL-SKIP-macro).
 
 
-# Meaning of "compatibility" : *Unit Tests form a specification*
+## Meaning of "compatibility" : *Unit Tests form a specification*
 
 Our interpretation of Trivia's compatibility to Optima can be summarized in the title. "If there is a test case in Optima, it defines the behavior of Trivia". The contents in this page are only those materials that do not follow this policy: The features which are tested in Optima but the corresponding tests are changed/removed in Trivia.
 
