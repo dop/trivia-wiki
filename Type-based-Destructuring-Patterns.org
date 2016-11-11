@@ -32,6 +32,12 @@ returns =3=.
    x))
 #+END_SRC
 
+When =list*= pattern has a single subpattern =x= e.g. =(list* x)=, however, the object type is not checked and the object always matches. This is related to the definition of list* in [[CLHS][http://clhs.lisp.se/Body/f_list_.htm]]:
+
+    If list* receives only one object, that object is returned, regardless of whether or not it is a list. 
+
+Pattern matching/destructuring is a dual operation of object construction. If a vector is created with a constructor form =(vector 1 2 3)=, the pattern which matches the object should also resemble the form, e.g. =(vector a b c)=. Since destructor & constructor are dual, it is better if the behavior of the pattern reflects the original function.
+
 Both patterns can be /derived/ from =cons= pattern. See also: [[./defpattern]]
 
 ** Vector, Vector* Patterns
