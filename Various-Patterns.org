@@ -1,5 +1,5 @@
 Trivia maintains a full compatibility with Optima. If you are already familier with Optima, there is no need to understand anything new, other than the additional patterns introduced in Trivia.
-As the baseline, [[https://github.com/guicho271828/trivia/wiki/Basic-Usage-3:-Match-and-Variants][this page]] describe the syntax of macro =match= and its variants. 
+As the baseline, [[https://github.com/guicho271828/trivia/wiki/Match-and-Variants][this page]] describe the syntax of macro =match= and its variants. 
 In the following sections, I briefly summarize what kind of patterns are available in these matcher macros.
 
 
