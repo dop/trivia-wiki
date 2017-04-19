@@ -1,23 +1,33 @@
-## Inline/Splice pattern 
+## Inline/Splice pattern **implemented**
 
-(cf. https://github.com/m2ym/optima/issues/103)
+The expansion result of an inline pattern is inserted in the enclosing pattern in a splicing manner.
+You can define an inline pattern via `defpattern-inline`. We have now two patterns implemented, `@` and `@@`.
 
-Inline pattens are useful in general, not only for lists.
-consider the case below, assuming we have a pattern called `inline`.
+### @@ pattern
+This is useful for repeating the same pattern for a fixed number of time.
+This will save a lot of code when parsing a long list, and
+also beneficial when implementing array-pattern.
 
 ```lisp
-(defpattern skip (n)
-   `(inline ,@(mapcar (constantly '_) (iota n))) ;; produces (inline _ _ _) for (skip 3)
+(match x
+   ((list x (@@ 10 _) y) ...))
+;; is equivalent to
 
 (match x
-   ((list x (skip 10) y) ...))
-
-(match x
-   ((list x _ _ _ _ _ _ _ _ _ _ y) ...))
+   ((list x _ _ _ _ _ _ _ _ _ _  y) ...))
 ```
 
-This will save a lot of code when parsing a long list.
-also beneficial when implementing array-pattern.
+### @ pattern
+This is an identity pattern, i.e. does nothing other than returning the given pattern.
+
+```lisp
+(match x
+   ((list x (@ 10) y) ...))
+;; is equivalent to
+
+(match x
+   ((list x 10 y) ...))
+```
 
 ## array patterns
 
