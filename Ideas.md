@@ -1,37 +1,3 @@
-## Inline/Splice pattern **implemented**
-
-The expansion result of an inline pattern is inserted in the enclosing pattern in a splicing manner.
-You can define an inline pattern via `defpattern-inline`. We have now two patterns implemented, `@` and `@@`.
-
-### @@ pattern
-This is useful for repeating the same pattern for a fixed number of time.
-This will save a lot of code when parsing a long list, and
-also beneficial when implementing array-pattern.
-
-```lisp
-(match x
-   ((list x (@@ 10 _) y) ...))
-;; is equivalent to
-
-(match x
-   ((list x _ _ _ _ _ _ _ _ _ _  y) ...))
-```
-
-### @ pattern
-This is an identity pattern, i.e. does nothing other than returning the given pattern.
-
-```lisp
-(match x
-   ((list x (@ 10) y) ...))
-;; is equivalent to
-
-(match x
-   ((list x 10 y) ...))
-```
-
-## array patterns
-
-a must-have, I guess. It would be great if the pattern can implement LU decomposition beautifully.
 
 ## Improving Regexp Pattern
 
