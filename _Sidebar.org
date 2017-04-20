@@ -14,7 +14,7 @@
 + [[Match-and-Variants][Match and Variants]]
 + [[NEXT-FAIL-SKIP-macro][NEXT FAIL SKIP macro]]
 + [[Using-Alternative-Optimizer]]
-* Implementer's notice
+* Implementer's note
 + [[Main-Page-for-Implementers][Main Page for Implementers]]
 + [[Level-0-Patterns][Level 0 Patterns]]
 + [[Level-1-Patterns][Level 1 Patterns]]
