@@ -17,7 +17,7 @@ Matches against a list, and matches subpatterns against N last elements obtained
 
 + Syntax :: read /subpattern/
 
-Useful for simple parsing (especially in combination with `trivia.ppcre:split` pattern)
+Useful for simple parsing (especially in combination with =trivia.ppcre:split= pattern)
 
 The current matching object should be a =string=.
 =subpattern= is matched against the result of reading the string by =read-from-string=.
