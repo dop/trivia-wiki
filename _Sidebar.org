@@ -11,6 +11,7 @@
   + [[Special-Patterns][Special Patterns]]
   + [[Numeric-Patterns][Numeric Patterns]]
   + [[Inline-Patterns][Inline Patterns]]
++ [[Contrib-packages]]
 + [[Match-and-Variants][Match and Variants]]
 + [[NEXT-FAIL-SKIP-macro][NEXT FAIL SKIP macro]]
 + [[Using-Alternative-Optimizer]]
