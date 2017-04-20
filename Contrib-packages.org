@@ -1,0 +1,91 @@
+Trivia has several contrib packages that integrates to other libraries.
+
+* =trivia.ppcre=
+Provides 3 patterns: =ppcre=, =split= and =split*=.
+
+** ppcre pattern
+
+=ppcre= pattern is a wrapper around =ppcre:scan-to-strings=.
+
++ Syntax :: ppcre (/regexp/ &key /start end sharedp/) &rest /subpatterns/ *(long form)*
+            
+            ppcre /regexp/ &rest /subpatterns/   *(short form)*
+
+#+BEGIN_SRC lisp
+(match "abcccdddcd"
+  ((ppcre "ab([cd]+)" var)
+    var))
+;; -> "cccdddcd"
+#+END_SRC
+
+** split, split* pattern
+
+=split= pattern is a wrapper around =ppcre:split=. =split*= pattern is a soft-match variant.
+
++ Syntax :: split /regexp/ &rest /subpatterns/
+            
+            split* /regexp/ &rest /subpatterns/
+
+#+BEGIN_SRC lisp
+(match "a b"
+  ((split " " var)
+    :does-not-match)
+  ((split " " var var2 var3)
+    :does-not-match)
+  ((split " " var var2)
+    (list var var2)))
+;; -> ("a" "b")
+
+(match "a b"
+  ((split* " " var)
+    var)
+;; -> ("a")
+#+END_SRC
+
+* =trivia.cffi=
+
+=->= pattern provides a foreign slot access.
+
++ Syntax :: -> /foreign-struct-type/ &rest /slots/
+
++ /slots/ := {/slot/}*
++ /slot/  := /slotname/ | (& /slotname/) | (/slotname/ /subpattern/)
++ /slotname/ := symbol
+
+Example:
+
+#+BEGIN_SRC lisp
+(defcstruct bar
+  (baz :int))
+(defcstruct foo
+  (bar (:struct bar)))
+
+(match (foreign-alloc 'foo) ; returns a pointer
+  ((-> (:struct foo)
+     bar                            ; foreign-slot-value access (leaf pattern)
+     (& bar)                        ; explicit foreign-slot-pointer access
+     (bar bar)                      ; implicit foreign-slot-pointer access (nested pattern)
+     (bar                           ; implicit foreign-slot-pointer access (nested pattern)
+      (-> (:struct bar)
+        baz)))                      ; leaf node: value access
+   baz)) ;; uninitialized value
+#+END_SRC
+
+Note: Above example does not actually compile because it reuses the same variable.
+
+* =fare-quasiquote=
+
+Loading this package and using the :fare-quasiquote readtable, you can now write a pattern with a quasiquoted list.
+
+#+BEGIN_SRC lisp
+(in-readtable :fare-quasiquote)
+;; or better,
+(ql:quickload :cl-syntax-quasiquote)
+(cl-syntax:use-syntax :fare-quasiquote)
+
+(match (list 1 2)
+  (`(,b ,c)
+    (assert (= 1 b))
+    (assert (= 2 c))))
+#+END_SRC
+
