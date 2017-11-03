@@ -16,7 +16,7 @@ The first argument to assoc and property patterns are evaluated in trivia, while
 ```
 
 Assoc pattern also do **not** match against an improper association list while they do on Optima.
-Optima skips some contents that are not a cons cell, while Trivia strictly follows the behavior as defined by ANSI spec, as it just calls the `assoc` function.
+Optima skips some contents that are not cons cells, while Trivia strictly follows the behavior as defined by ANSI spec, as it just calls the `assoc` function.
 
 ```cl
 (trivia:match '(2 (:foo . 1))
