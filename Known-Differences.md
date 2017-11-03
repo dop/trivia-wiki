@@ -1,5 +1,59 @@
 In this page, we describe the known differences between Trivia and Optima.
 
+## Extended Semantics of Constant patterns
+
+In Optima, constant patterns are defined as follows:
+
+```
+A constant-pattern matches the constant itself.
+
+Examples:
+(match 1 (1 2)) => 2
+(match "foo" ("foo" "bar")) => "bar"
+(match '(1) ('(1) 2)) => 2
+```
+
+And [the tests only defines such cases that all elements are immediate literals such as characters, keywords and numbers.](https://github.com/m2ym/optima/blob/master/test/suite.lisp#L43)
+
+We took a rather radical interpretation of this specification, allowing the symbols in the structural constants (conses, arrays, structs) to be parsed as patterns. For example,
+
+```lisp
+(match #(0 1 2)
+  (#(_ b 2) b))
+;; -> 1
+
+(match #2A((0 1 2) (3 4 5))
+  (#2A((_ b 2) (_ _ f)) (+ b f)))
+;; 1+5 -> 6
+
+(match #S(person :name "bob")
+  (#S(person :name name) name))
+;; -> "bob"
+```
+
+The reason of this "patterns by default" strategy is that these readmacros (for vectors etc.) do not have quasiquotes/unquote (not even with fare-quasiquote). These literal patterns are converted to `vector`, `array` or `structure` patterns. To match a symbol itself, use `quote` such as `'_`.
+
+Rather unintentionally, the same rule applies to the quoted list (2017/11/3). So, a pattern `'(a)` binds a variable `a`:
+
+```lisp
+(match '(1)
+  ('(a) a))
+;; -> 1
+```
+
+This is again undefined in optima's test cases, so this is still acceptable as an extension. However, I am currently in doubt of its utility, given the interaction to the contrib package `trivia.quasiquote`. In fact, this may be rather unintuitive (an example for parsing [the STRIPS PDDL format](https://helios.hud.ac.uk/scommv/IPC-14/repository/kovacs-pddl-3.1-2011.pdf)):
+
+```lisp
+;; checks if FORM is of certain form
+(match form
+  (`(forall ,args (when (and ,condition) (increase (total-cost) ,_)))
+   ...))
+```
+
+This `quasiquote`-based pattern checks if the first element is `forall` and so on, but when it comes to `(total-cost)` it expands to a standard quote because there are no commas inside `(total-cost)`. This makes `(total-cost)` a pattern that is equivalent to `(list total-cost)` rather than `(list 'total-cost)`, and eventually the `eq`-check against `'total-cost` is not performed.
+
+I am currently considering the removal of quoted cons from this extension, or a way to circumvent it by making `quasiquote` recognize the quoted literal. (2017/11/3)
+
 ## Assoc and Property Patterns
 
 The first argument to assoc and property patterns are evaluated in trivia, while quoted in optima.
