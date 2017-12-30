@@ -73,7 +73,7 @@ Example:
 
 Note: Above example does not actually compile because it reuses the same variable.
 
-* =fare-quasiquote=
+* =trivia.quasiquote=
 
 Loading this package and using the :fare-quasiquote readtable, you can now write a pattern with a quasiquoted list.
 
