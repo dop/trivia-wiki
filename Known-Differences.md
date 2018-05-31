@@ -15,7 +15,7 @@ Examples:
 
 And [the tests only defines such cases that all elements are immediate literals such as characters, keywords and numbers.](https://github.com/m2ym/optima/blob/master/test/suite.lisp#L43)
 
-We took a rather radical interpretation of this specification, allowing the symbols in the structural constants (conses, arrays, structs) to be parsed as patterns. For example,
+We took a rather radical interpretation of this specification, allowing the symbols in the structural constants (arrays, structs) to be parsed as patterns. For example,
 
 ```lisp
 (match #(0 1 2)
