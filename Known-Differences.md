@@ -41,17 +41,6 @@ The reason of this "patterns by default" strategy is that these readmacros (for 
 ;; -> 1
 ```
 
-~This is again undefined in optima's test cases, so this is still acceptable as an extension. However, I am currently in doubt of its utility, given the interaction to the contrib package `trivia.quasiquote`. In fact, this may be rather unintuitive (an example for parsing [the STRIPS PDDL format](https://helios.hud.ac.uk/scommv/IPC-14/repository/kovacs-pddl-3.1-2011.pdf)):~
-
-```lisp
-;; checks if FORM is of certain form
-(match form
-  (`(forall ,args (when (and ,condition) (increase (total-cost) ,_)))
-   ...))
-```
-
-~This `quasiquote`-based pattern checks if the first element is `forall` and so on, but when it comes to `(total-cost)` it expands to a standard quote because there are no commas inside `(total-cost)`. This makes `(total-cost)` a pattern that is equivalent to `(list total-cost)` rather than `(list 'total-cost)`, and eventually the `eq`-check against `'total-cost` is not performed.~
-
 ~I am currently considering the removal of quoted cons from this extension, or a way to circumvent it by making `quasiquote` recognize the quoted literal. (2017/11/3)~
 
 Now, elements in list constants are not treated as patterns. Use trivia.quasiquote instead. (2018/5/31)
