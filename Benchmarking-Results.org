@@ -169,7 +169,7 @@ Evaluation took:
   248,490,424,774 processor cycles
   475,568 bytes consed
   
--------------------- TRIVIAL ----------------------------------------
+-------------------- TRIVIA -----------------------------------------
 Evaluation took:
   10.279 seconds of real time
   10.278082 seconds of total run time (10.226178 user, 0.051904 system)
