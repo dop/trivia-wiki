@@ -45,9 +45,11 @@ It does not match when /subpattern/ matches. The variables used in
      the next /subpattern2/.
 
 The object is first matched against /subpattern1/. If that fails, whole
-clause declines the matching. Otherwize, /test-form/ is evaluated. When the
+clause declines the matching. Otherwise, /test-form/ is evaluated. When the
 result is true, then each of /generator-form/ is evaluated and matched
 against corresponding /subpattern2/.
+
+If /subpattern1/ is of the form =(or <pat1> <pat2> ...)= however, it tries to match with one of the /or/-subpatterns such that /test-form/ is satisfied.
 
 *Example*:
 
@@ -58,5 +60,10 @@ against corresponding /subpattern2/.
           (- x y) (satisfies evenp)) ; generator1, subpattern1
    t))
 ;; --> nil, since (- x y) == 3 does not satisfies evenp
-#+END_SRC
 
+(match '(1)
+  ((guard (or (list x) x)     ; subpattern
+          (evenp x)) ; test-form
+   x))
+;; --> error, since '(1) gets matched with x, after failing evenp on matching (list x)
+#+END_SRC
