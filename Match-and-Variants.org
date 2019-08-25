@@ -81,3 +81,20 @@ Similar to /match*,ematch*/ and /cmatch*/, but this is for multiple-value.
 + bodyform :: an implicit progn.
 
 These are the shortcuts for writing a function that performs a pattern matching immediately.
+
+** let-match, let-match*
+
+They are short macros on top of ematch*.
+
+```
+(trivia:let-match ((a 1)
+                   ;; this works but can't just do just b with current implementation
+                   (b)
+                   ((list _ c d) (list 1 2 3))
+                   ((cons e f) '(4 . 5))
+                   ;; trivia doesn't have a values pattern
+                   ((last (list g h) 2)
+                    (multiple-value-list (values 1 2 3 4 5 6 7))))
+  (list a b c d e f g h))
+;; => (1 NIL 2 3 4 5 6 7)
+```
