@@ -5,4 +5,4 @@ In the following sections, I briefly summarize what kind of patterns are availab
 
 + [[./Type-Based-Destructuring-Patterns][Type-Based Destructuring Patterns]] (In addition to the Optima's pattern, Trivia has *soft-match* variants and *specialized* variants of vector patterns)
 + [[./Logic-Based-Patterns][Logic Based Patterns]]
-+ [[./Special-Patterns][Special Patterns]] (=bind= pattern and =access= pattern)
++ [[./Special-Patterns][Special Patterns]] (=place= pattern, =bind= pattern and =access= pattern)
