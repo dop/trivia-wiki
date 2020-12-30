@@ -61,18 +61,23 @@ the extended guard1 syntax is:
 #+BEGIN_SRC lisp
 (guard1 (sym &key
            (type t)
-           place
+           (binder 'let)
            (ignorable (if (symbol-package sym) nil t))
+           dynamic-extent
+           special
          &allow-other-keys)
         test-form {generator-form subpattern}*)
 #+END_SRC
 
 - type :: a type specifier. It is added to the declaration after =let=.
-- place :: if this key is non-nil, then the symbol is bound with
-           symbol-macrolet and the accessor becomes setf-able.
+- binder :: either a symbol `let`, `symbol-macrolet`, `progv`.
+           The resulting binding is generated with these special forms.
+           For example, with `symbol-macrolet`, then the symbol is bound with symbol-macrolet and the accessor becomes setf-able.
 - ignorable :: If non-nil, =symbol= is declared to be =ignorable=. Default
                value is =T= when =symbol= is [[http://www.ai.mit.edu/projects/iiip/doc/CommonLISP/HyperSpec/Body/glo_a.html#apparently_uninterned][an apparently uninterned symbol]], and
                =NIL= otherwise.
+- dynamic-extent :: If non-nil, it adds `dynamic-extent` declaration.
+- special :: If non-nil, it adds `special` declaration.
 
 Note that =type= does not affect the pattern optimizer nor the test form. The declaration is added only to the conditional branch where the test form is evaluated to be true.
 
