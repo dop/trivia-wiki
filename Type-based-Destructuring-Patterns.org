@@ -148,6 +148,49 @@ Two patterns are derived from these patterns.
 =alist= and =plist= patterns expand into a collection of =assoc= and
 =property= patterns, respectively, connected by an =and= pattern.
 
+** Hash-table-entry, Hash-table-entries Pattern
+
++ Syntax :: hash-table-entry /key/ /pattern/ &optional (/default/ nil) /foundp/
+
+            hash-table-entry! /key/ /pattern/
+
+Matches if current value is of =hash-table= type and has given /key/ set to value matching corresponding /pattern/. If /key/ is not found, /default/ is used. Follows =property= API. =hash-table-entry!= is a strict version like =property!= and matches only if /key/ is present in hash table.
+
+Example:
+
+#+begin_src lisp
+(let ((table (make-hash-table :test 'equal)))
+  (setf (gethash "a" table) 1)
+  (match table
+    ((hash-table-entry "a" 2)
+     "Does not match, because \"a\" is 1.")
+    ((hash-table-entry! "b" _)
+     "Does not match, because there is no \"b\".")
+    ((hash-table-entry "b" _ nil nil)
+     "Matches, because there is no \"b\" and we explicitly set FOUNDP to NIL.")))
+#+end_src
+
++ Syntax :: hash-table-entries /key/ /pattern/ &rest /keys-and-patterns/
+
+            hash-table-entries! /key/ /pattern/ &rest /keys-and-patterns/
+
+Expands to =(and (hash-table-entry ...) ...)= pattern. Strict version uses =hash-table-entry!= as subpattern.
+
+Example:
+
+#+BEGIN_SRC lisp
+(let ((table (make-hash-table :test 'equal)))
+  (setf (gethash "a" table) 1)
+  (setf (gethash "b" table) 2)
+  (match table
+    ((hash-table-entries "a" 2)
+     "Does not match, because \"a\" is 1.")
+    ((hash-table-entries! "c" nil)
+     "Does not match, because there is no \"c\".")
+    ((hash-table-entries "a" x "b" 2 "c" nil)
+     (format nil "Matches, because \"b\" is 2 and \"c\" defaults to NIL. Also captures \"a\" value ~d as X." x))))
+#+END_SRC
+
 ** Array, simple-array, row-major-array pattern
 
 + Syntax :: array &key /element-type/ /adjustable/ /has-fill-pointer/ /displaced-to/ /(displaced-index-offset 0)/ /dimensions/ /rank/ /total-size/ /(contents nil)/
